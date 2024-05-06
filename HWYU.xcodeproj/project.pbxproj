@@ -25,6 +25,17 @@
 		C6EE80C32B4A985000735248 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EE80C22B4A985000735248 /* LoginView.swift */; };
 		C6EE80C82B4A9C5400735248 /* Letter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EE80C72B4A9C5400735248 /* Letter.swift */; };
 		C6EFA8022BE8C60400AA4686 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C6EFA8012BE8C60400AA4686 /* GoogleService-Info.plist */; };
+		C6EFA8052BE8D42000AA4686 /* TAEBAEK milkyway.otf in Resources */ = {isa = PBXBuildFile; fileRef = C6EFA8042BE8D40C00AA4686 /* TAEBAEK milkyway.otf */; };
+		C6EFA8062BE8D42100AA4686 /* TAEBAEK milkyway.otf in Resources */ = {isa = PBXBuildFile; fileRef = C6EFA8042BE8D40C00AA4686 /* TAEBAEK milkyway.otf */; };
+		C6EFA8142BE8D77500AA4686 /* SCDream1.otf in Resources */ = {isa = PBXBuildFile; fileRef = C6EFA8092BE8D77400AA4686 /* SCDream1.otf */; };
+		C6EFA8152BE8D77500AA4686 /* SCDream2.otf in Resources */ = {isa = PBXBuildFile; fileRef = C6EFA80A2BE8D77400AA4686 /* SCDream2.otf */; };
+		C6EFA8162BE8D77500AA4686 /* SCDream3.otf in Resources */ = {isa = PBXBuildFile; fileRef = C6EFA80B2BE8D77400AA4686 /* SCDream3.otf */; };
+		C6EFA8172BE8D77500AA4686 /* SCDream4.otf in Resources */ = {isa = PBXBuildFile; fileRef = C6EFA80C2BE8D77400AA4686 /* SCDream4.otf */; };
+		C6EFA8182BE8D77500AA4686 /* SCDream5.otf in Resources */ = {isa = PBXBuildFile; fileRef = C6EFA80D2BE8D77400AA4686 /* SCDream5.otf */; };
+		C6EFA8192BE8D77500AA4686 /* SCDream6.otf in Resources */ = {isa = PBXBuildFile; fileRef = C6EFA80E2BE8D77400AA4686 /* SCDream6.otf */; };
+		C6EFA81A2BE8D77500AA4686 /* SCDream7.otf in Resources */ = {isa = PBXBuildFile; fileRef = C6EFA80F2BE8D77400AA4686 /* SCDream7.otf */; };
+		C6EFA81B2BE8D77500AA4686 /* SCDream8.otf in Resources */ = {isa = PBXBuildFile; fileRef = C6EFA8102BE8D77400AA4686 /* SCDream8.otf */; };
+		C6EFA81C2BE8D77500AA4686 /* SCDream9.otf in Resources */ = {isa = PBXBuildFile; fileRef = C6EFA8112BE8D77400AA4686 /* SCDream9.otf */; };
 		C6FB40192B48E40A001FBA6D /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = C6FB40182B48E40A001FBA6D /* FirebaseAuth */; };
 		C6FB401B2B48E40A001FBA6D /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = C6FB401A2B48E40A001FBA6D /* FirebaseDatabase */; };
 		C6FB401D2B48E40A001FBA6D /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = C6FB401C2B48E40A001FBA6D /* FirebaseFirestore */; };
@@ -79,6 +90,17 @@
 		C6EE80C22B4A985000735248 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		C6EE80C72B4A9C5400735248 /* Letter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Letter.swift; sourceTree = "<group>"; };
 		C6EFA8012BE8C60400AA4686 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C6EFA8042BE8D40C00AA4686 /* TAEBAEK milkyway.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "TAEBAEK milkyway.otf"; path = "../../../../../Downloads/TAEBAEK milkyway.otf"; sourceTree = "<group>"; };
+		C6EFA8072BE8D53D00AA4686 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		C6EFA8092BE8D77400AA4686 /* SCDream1.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SCDream1.otf; sourceTree = "<group>"; };
+		C6EFA80A2BE8D77400AA4686 /* SCDream2.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SCDream2.otf; sourceTree = "<group>"; };
+		C6EFA80B2BE8D77400AA4686 /* SCDream3.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SCDream3.otf; sourceTree = "<group>"; };
+		C6EFA80C2BE8D77400AA4686 /* SCDream4.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SCDream4.otf; sourceTree = "<group>"; };
+		C6EFA80D2BE8D77400AA4686 /* SCDream5.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SCDream5.otf; sourceTree = "<group>"; };
+		C6EFA80E2BE8D77400AA4686 /* SCDream6.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SCDream6.otf; sourceTree = "<group>"; };
+		C6EFA80F2BE8D77400AA4686 /* SCDream7.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SCDream7.otf; sourceTree = "<group>"; };
+		C6EFA8102BE8D77400AA4686 /* SCDream8.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SCDream8.otf; sourceTree = "<group>"; };
+		C6EFA8112BE8D77400AA4686 /* SCDream9.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SCDream9.otf; sourceTree = "<group>"; };
 		C6FB40212B48E866001FBA6D /* DDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDayView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -130,9 +152,11 @@
 		C61174FA2B287BCD0096FB5F /* HWYU */ = {
 			isa = PBXGroup;
 			children = (
+				C6EFA8072BE8D53D00AA4686 /* Info.plist */,
 				C61174FB2B287BCD0096FB5F /* HWYUApp.swift */,
 				C6EE80C72B4A9C5400735248 /* Letter.swift */,
 				C6EE80C02B4A981100735248 /* AuthViewModel.swift */,
+				C6EFA8032BE8D40200AA4686 /* Font */,
 				C61174FD2B287BCD0096FB5F /* ContentView.swift */,
 				C6EE80C22B4A985000735248 /* LoginView.swift */,
 				C6FB40212B48E866001FBA6D /* DDayView.swift */,
@@ -173,6 +197,32 @@
 				C6167BCA2B29FBF100A611E4 /* Info.plist */,
 			);
 			path = HWYU_Widget;
+			sourceTree = "<group>";
+		};
+		C6EFA8032BE8D40200AA4686 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				C6EFA8122BE8D77400AA4686 /* S-Core_Dream_OTF */,
+				C6EFA8042BE8D40C00AA4686 /* TAEBAEK milkyway.otf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
+		C6EFA8122BE8D77400AA4686 /* S-Core_Dream_OTF */ = {
+			isa = PBXGroup;
+			children = (
+				C6EFA8092BE8D77400AA4686 /* SCDream1.otf */,
+				C6EFA80A2BE8D77400AA4686 /* SCDream2.otf */,
+				C6EFA80B2BE8D77400AA4686 /* SCDream3.otf */,
+				C6EFA80C2BE8D77400AA4686 /* SCDream4.otf */,
+				C6EFA80D2BE8D77400AA4686 /* SCDream5.otf */,
+				C6EFA80E2BE8D77400AA4686 /* SCDream6.otf */,
+				C6EFA80F2BE8D77400AA4686 /* SCDream7.otf */,
+				C6EFA8102BE8D77400AA4686 /* SCDream8.otf */,
+				C6EFA8112BE8D77400AA4686 /* SCDream9.otf */,
+			);
+			name = "S-Core_Dream_OTF";
+			path = "../../../../../Downloads/S-Core_Dream_OTF";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -271,7 +321,17 @@
 			files = (
 				C61175032B287BCE0096FB5F /* Preview Assets.xcassets in Resources */,
 				C61175002B287BCE0096FB5F /* Assets.xcassets in Resources */,
+				C6EFA8172BE8D77500AA4686 /* SCDream4.otf in Resources */,
+				C6EFA8142BE8D77500AA4686 /* SCDream1.otf in Resources */,
+				C6EFA8182BE8D77500AA4686 /* SCDream5.otf in Resources */,
+				C6EFA8152BE8D77500AA4686 /* SCDream2.otf in Resources */,
+				C6EFA8162BE8D77500AA4686 /* SCDream3.otf in Resources */,
 				C6EFA8022BE8C60400AA4686 /* GoogleService-Info.plist in Resources */,
+				C6EFA81B2BE8D77500AA4686 /* SCDream8.otf in Resources */,
+				C6EFA81A2BE8D77500AA4686 /* SCDream7.otf in Resources */,
+				C6EFA81C2BE8D77500AA4686 /* SCDream9.otf in Resources */,
+				C6EFA8052BE8D42000AA4686 /* TAEBAEK milkyway.otf in Resources */,
+				C6EFA8192BE8D77500AA4686 /* SCDream6.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,6 +340,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C6167BC92B29FBF100A611E4 /* Assets.xcassets in Resources */,
+				C6EFA8062BE8D42100AA4686 /* TAEBAEK milkyway.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -455,6 +516,7 @@
 				DEVELOPMENT_TEAM = 285ZKW5MPR;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HWYU/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "혜원이융의";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -490,6 +552,7 @@
 				DEVELOPMENT_TEAM = 285ZKW5MPR;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HWYU/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "혜원이융의";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

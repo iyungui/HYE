@@ -37,19 +37,23 @@ struct DDayView: View {
             VStack(alignment: .center) {
                 HStack {
                     Text("혜원")
+
+                        .font(Font.custom("S-CoreDream-5Medium", size: 17))
                     Button {
                         withAnimation {
                             reload()
                         }
                     } label: {
                         Image(systemName: "heart.fill")
+                            .font(.title3)
                             .foregroundColor(.green)
                     }
 
                     Text("융의")
+                        .font(Font.custom("S-CoreDream-5Medium", size: 17))
                 }
                 .padding(.vertical)
-                .font(.headline)
+                
 
                 Spacer()
 
@@ -75,6 +79,12 @@ struct DDayView: View {
         }
         .onAppear {
             reload()
+//            for family: String in UIFont.familyNames {
+//                            print(family)
+//                            for names : String in UIFont.fontNames(forFamilyName: family){
+//                                print("=== \(names)")
+//                            }
+//                        }
         }
         .navigationBarBackButtonHidden()
     }
@@ -131,3 +141,14 @@ struct AnimatedDaysCountView: View {
 #Preview {
     DDayView()
 }
+/*
+ === S-CoreDream-1Thin
+ === S-CoreDream-2ExtraLight
+ === S-CoreDream-4Regular
+ === S-CoreDream-3Light
+ === S-CoreDream-5Medium
+ === S-CoreDream-6Bold
+ === S-CoreDream-7ExtraBold
+ === S-CoreDream-8Heavy
+ === S-CoreDream-9Black
+ */
