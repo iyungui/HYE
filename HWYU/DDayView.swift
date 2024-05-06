@@ -16,7 +16,9 @@ struct DDayView: View {
 
     @State var currentImageName: String = "image01"
     
-    func reload() {
+    @State private var currentDaysCount = 0
+    
+    private func reload() {
         var newImage: String
         repeat {
             newImage = imageNames.randomElement() ?? "image01"
@@ -24,24 +26,58 @@ struct DDayView: View {
         currentImageName = newImage
     }
     
+    private func recount() {
+        currentDaysCount = 0
+        Timer.scheduledTimer(withTimeInterval: 0.003, repeats: true) { timer in
+            if currentDaysCount < daysSinceAnniversary() {
+                currentDaysCount += 1
+            } else {
+                timer.invalidate()
+            }
+        }
+    }
+
+    // Calculates the number of days since the anniversary
+    private func daysSinceAnniversary() -> Int {
+        let today = Date()
+        guard today > anniversaryDate else { return 0 }
+
+        let components = Calendar.current.dateComponents([.day], from: anniversaryDate, to: today)
+        return components.day ?? 0
+    }
+
+    // Formats a date to "yyyy.MM.dd" format
+    private func formatDate(_ date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy.MM.dd"
+        return formatter.string(from: date)
+    }
+
+    // Returns the current date as a string in "yyyy-MM-dd" format
+    private func currentDateString() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        return formatter.string(from: Date())
+    }
+    
     var body: some View {
         ZStack {
             Image(currentImageName)
                 .resizable()
                 .scaledToFit()
-                .ignoresSafeArea()
             
-            LinearGradient(gradient: Gradient(colors: [.clear, .black.opacity(0.85)]), startPoint: .top, endPoint: .bottom)
+            LinearGradient(gradient: Gradient(colors: [.clear, .black.opacity(0.5)]), startPoint: .top, endPoint: .bottom)
                 .ignoresSafeArea()
 
             VStack(alignment: .center) {
                 HStack {
                     Text("혜원")
-
                         .font(Font.custom("S-CoreDream-5Medium", size: 17))
+                    
                     Button {
                         withAnimation {
                             reload()
+                            recount()
                         }
                     } label: {
                         Image(systemName: "heart.fill")
@@ -54,7 +90,6 @@ struct DDayView: View {
                 }
                 .padding(.vertical)
                 
-
                 Spacer()
 
                 HStack {
@@ -73,74 +108,35 @@ struct DDayView: View {
                     .foregroundColor(.white)
                     .padding(.bottom, 5)
 
-                AnimatedDaysCountView(anniversaryDate: anniversaryDate)
+                HStack {
+                    Text("\(currentDaysCount)")
+                        .font(.largeTitle)
+                        .fontWeight(.black)
+                        .italic()
+                    Image(systemName: "arrowshape.up.fill")
+                }
+                
+                .foregroundColor(.white)
+                .shadow(color: .black, radius: 1, x: 1, y: 1)
+
             }
-            .padding(.bottom, 40)
         }
         .onAppear {
             reload()
-//            for family: String in UIFont.familyNames {
-//                            print(family)
-//                            for names : String in UIFont.fontNames(forFamilyName: family){
-//                                print("=== \(names)")
-//                            }
-//                        }
+            recount()
         }
         .navigationBarBackButtonHidden()
     }
-    
-
-
-    func formatDate(_ date: Date) -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy.MM.dd"
-        return formatter.string(from: date)
-    }
-    func currentDateString() -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
-        return formatter.string(from: Date())
-    }
 }
 
-struct AnimatedDaysCountView: View {
-    let anniversaryDate: Date
-    @State private var currentDaysCount = 0
-
-    var body: some View {
-        HStack {
-            Text("\(currentDaysCount)")
-                .font(.largeTitle)
-                .fontWeight(.black)
-                .italic()
-                .foregroundColor(.white)
-                .shadow(color: .black, radius: 5, x: 0, y: 0)
-            Image(systemName: "arrowshape.up.fill")
-                .foregroundColor(.white)
-        }
-        .onAppear {
-            Timer.scheduledTimer(withTimeInterval: 0.003, repeats: true) { timer in
-                if currentDaysCount < daysSinceAnniversary() {
-                    currentDaysCount += 1
-                } else {
-                    timer.invalidate()
-                }
-            }
-        }
-    }
-
-    func daysSinceAnniversary() -> Int {
-        let today = Date()
-        guard today > anniversaryDate else { return 0 }
-
-        let components = Calendar.current.dateComponents([.day], from: anniversaryDate, to: today)
-        return components.day ?? 0
-    }
-}
 
 #Preview {
     DDayView()
 }
+
+
+
+
 /*
  === S-CoreDream-1Thin
  === S-CoreDream-2ExtraLight
@@ -151,4 +147,12 @@ struct AnimatedDaysCountView: View {
  === S-CoreDream-7ExtraBold
  === S-CoreDream-8Heavy
  === S-CoreDream-9Black
+ 
+ 
+//            for family: String in UIFont.familyNames {
+//                            print(family)
+//                            for names : String in UIFont.fontNames(forFamilyName: family){
+//                                print("=== \(names)")
+//                            }
+//                        }
  */
