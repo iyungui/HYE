@@ -9,36 +9,43 @@ import SwiftUI
 
 struct DDayView: View {
     let anniversaryDate = Calendar.current.date(from: DateComponents(year: 2023, month: 4, day: 5))!
-//    let imageNames = ["image01", "image02", "image03", "image04", "image05", "image06", "image07"]
     
     var imageNames: [String] {
-        guard let urls = Bundle.main.urls(forResourcesWithExtension: "png", subdirectory: "myImages.xcassets") else {
-            return []
-        }
-        return urls.compactMap { url in
-            return url.deletingPathExtension().lastPathComponent
-        }
+        return (1...7).map { String(format: "image%02d", $0) }
     }
 
-    var randomImageName: String {
-        imageNames.randomElement() ?? "image01"
+    @State var currentImageName: String = "image01"
+    
+    func reload() {
+        var newImage: String
+        repeat {
+            newImage = imageNames.randomElement() ?? "image01"
+        } while newImage == currentImageName
+        currentImageName = newImage
     }
-
+    
     var body: some View {
         ZStack {
-            Image(randomImageName)
+            Image(currentImageName)
                 .resizable()
                 .scaledToFit()
                 .ignoresSafeArea()
-
+            
             LinearGradient(gradient: Gradient(colors: [.clear, .black.opacity(0.85)]), startPoint: .top, endPoint: .bottom)
                 .ignoresSafeArea()
 
             VStack(alignment: .center) {
                 HStack {
                     Text("혜원")
-                    Image(systemName: "heart.fill")
-                        .foregroundColor(.green)
+                    Button {
+                        withAnimation {
+                            reload()
+                        }
+                    } label: {
+                        Image(systemName: "heart.fill")
+                            .foregroundColor(.green)
+                    }
+
                     Text("융의")
                 }
                 .padding(.vertical)
@@ -66,8 +73,13 @@ struct DDayView: View {
             }
             .padding(.bottom, 40)
         }
+        .onAppear {
+            reload()
+        }
         .navigationBarBackButtonHidden()
     }
+    
+
 
     func formatDate(_ date: Date) -> String {
         let formatter = DateFormatter()
