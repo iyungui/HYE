@@ -36,7 +36,7 @@ struct DDayView: View {
             }
         }
     }
-
+    
     // Calculates the number of days since the anniversary
     private func daysSinceAnniversary() -> Int {
         let today = Date()
@@ -45,7 +45,7 @@ struct DDayView: View {
         let components = Calendar.current.dateComponents([.day], from: anniversaryDate, to: today)
         return components.day ?? 0
     }
-
+    
     // Formats a date to "yyyy.MM.dd" format
     private func formatDate(_ date: Date) -> String {
         let formatter = DateFormatter()

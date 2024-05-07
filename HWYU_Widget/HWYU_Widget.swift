@@ -37,6 +37,12 @@ struct SimpleEntry: TimelineEntry {
     let configuration: ConfigurationAppIntent
 }
 
+struct DDayEntry: TimelineEntry {
+    let date: Date
+    let daysCount: Int
+    let currentImageName: String
+}
+
 struct HWYU_WidgetEntryView : View {
     var entry: Provider.Entry
 
@@ -58,7 +64,9 @@ struct HWYU_Widget: Widget {
         AppIntentConfiguration(kind: kind, intent: ConfigurationAppIntent.self, provider: Provider()) { entry in
             HWYU_WidgetEntryView(entry: entry)
                 .containerBackground(.fill.tertiary, for: .widget)
+                
         }
+        .supportedFamilies([.systemSmall])
     }
 }
 
