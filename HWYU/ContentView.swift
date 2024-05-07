@@ -81,19 +81,17 @@ struct ContentView: View {
     let sampleMent: [Ment] =  Ment.sampleMent
     
     var body: some View {
-        NavigationStack {
-            ScrollView {
-                LazyVStack(spacing: 100) {
-                    ForEach(sampleMent) { ment in
-                        AnimatedTextView(ment: ment)
-                    }
+        ScrollView {
+            LazyVStack(spacing: 100) {
+                ForEach(sampleMent) { ment in
+                    AnimatedTextView(ment: ment)
                 }
-                .padding()
             }
-            .navigationTitle("혜원이에게")
-            .toolbarBackground(gradientBackground, for: .navigationBar)
-            .background(gradientBackground)
+            .padding()
         }
+        .navigationTitle("혜원이에게")
+        .toolbarBackground(gradientBackground, for: .navigationBar)
+        .background(gradientBackground)
     }
 }
 
@@ -110,8 +108,8 @@ struct AnimatedTextView: View {
             let opacityEffect = max(0.0, 1 - (distanceToCenter / (screenHeight / 2)))
 
             Text(ment.text)
-                .font(.largeTitle)
-                .bold()
+                .font(Font.custom("S-CoreDream-5Medium", size: 30))
+
                 .scaleEffect(scaleEffect)
                 .opacity(opacityEffect)
                 .frame(maxWidth: .infinity, alignment: .center)

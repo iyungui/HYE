@@ -61,71 +61,87 @@ struct DDayView: View {
     }
     
     var body: some View {
-        ZStack {
-            Image(currentImageName)
-                .resizable()
-                .scaledToFit()
-            
-            LinearGradient(gradient: Gradient(colors: [.clear, .black.opacity(0.5)]), startPoint: .top, endPoint: .bottom)
-                .ignoresSafeArea()
-
-            VStack(alignment: .center) {
-                HStack {
-                    Text("혜원")
-                        .font(Font.custom("S-CoreDream-5Medium", size: 17))
-                    
-                    Button {
-                        withAnimation {
-                            reload()
-                            recount()
-                        }
-                    } label: {
-                        Image(systemName: "heart.fill")
-                            .font(.title3)
-                            .foregroundColor(.green)
-                    }
-
-                    Text("융의")
-                        .font(Font.custom("S-CoreDream-5Medium", size: 17))
-                }
-                .padding(.vertical)
+        NavigationStack {
+            ZStack {
+                Image(currentImageName)
+                    .resizable()
+                    .scaledToFit()
                 
-                Spacer()
+                LinearGradient(gradient: Gradient(colors: [.clear, .black.opacity(0.5)]), startPoint: .top, endPoint: .bottom)
+                    .ignoresSafeArea()
 
-                HStack {
-                    Text(formatDate(anniversaryDate))
+                VStack(alignment: .center) {
+                    HStack {
+                        Text("혜원")
+                            .font(Font.custom("S-CoreDream-5Medium", size: 17))
+                        
+                        Button {
+                            withAnimation {
+                                reload()
+                                recount()
+                            }
+                        } label: {
+                            Image(systemName: "heart.fill")
+                                .font(.title3)
+                                .foregroundColor(.green)
+                        }
 
-                    Image(systemName: "heart.fill")
-                        .foregroundColor(Color("mainColor"))
+                        Text("융의")
+                            .font(Font.custom("S-CoreDream-5Medium", size: 17))
+                    }
+                    .padding(.vertical)
                     
-                    Text("~")
-                }
-                .font(.headline)
-                .foregroundColor(.white)
+                    Text("우리가 함께한 지 벌써 \(currentDaysCount)일!")
+                        .font(Font.custom("S-CoreDream-5Medium", size: 17))
+                    
+                    Spacer()
 
-                Text(currentDateString())
+                    HStack {
+                        Text(formatDate(anniversaryDate))
+
+                        NavigationLink(destination: ContentView()) {
+                            Image(systemName: "heart.fill")
+                                .foregroundColor(Color("mainColor"))
+                        }
+                        
+                        Text("~")
+                    }
                     .font(.headline)
                     .foregroundColor(.white)
-                    .padding(.bottom, 5)
 
-                HStack {
-                    Text("\(currentDaysCount)")
-                        .font(.largeTitle)
-                        .fontWeight(.black)
-                        .italic()
-                    Image(systemName: "arrowshape.up.fill")
+                    Text(currentDateString())
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .padding(.bottom, 5)
+
+                    HStack {
+                        Button {
+                            withAnimation {
+                                reload()
+                                recount()
+                            }
+                        } label: {
+                            Text("\(currentDaysCount)")
+                                .font(.largeTitle)
+                                .fontWeight(.black)
+                                .italic()
+                        }
+                        
+
+                        Image(systemName: "arrowshape.up.fill")
+                    }
+                    
+                    .foregroundColor(.white)
+                    .shadow(color: .black, radius: 1, x: 1, y: 1)
+
                 }
-                
-                .foregroundColor(.white)
-                .shadow(color: .black, radius: 1, x: 1, y: 1)
-
             }
+            .onAppear {
+                reload()
+                recount()
+            }
+            .navigationBarBackButtonHidden()
         }
-        .onAppear {
-            reload()
-            recount()
-        }
-        .navigationBarBackButtonHidden()
     }
 }
 
