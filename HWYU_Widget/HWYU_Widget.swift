@@ -8,85 +8,80 @@
 import WidgetKit
 import SwiftUI
 
-struct Provider: AppIntentTimelineProvider {
-    func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), configuration: ConfigurationAppIntent())
-    }
-
-    func snapshot(for configuration: ConfigurationAppIntent, in context: Context) async -> SimpleEntry {
-        SimpleEntry(date: Date(), configuration: configuration)
-    }
-    
-    func timeline(for configuration: ConfigurationAppIntent, in context: Context) async -> Timeline<SimpleEntry> {
-        var entries: [SimpleEntry] = []
-
-        // Generate a timeline consisting of five entries an hour apart, starting from the current date.
-        let currentDate = Date()
-        for hourOffset in 0 ..< 5 {
-            let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-            let entry = SimpleEntry(date: entryDate, configuration: configuration)
-            entries.append(entry)
-        }
-
-        return Timeline(entries: entries, policy: .atEnd)
-    }
-}
-
-struct SimpleEntry: TimelineEntry {
-    let date: Date
-    let configuration: ConfigurationAppIntent
-}
-
 struct DDayEntry: TimelineEntry {
     let date: Date
     let daysCount: Int
     let currentImageName: String
 }
 
-struct HWYU_WidgetEntryView : View {
-    var entry: Provider.Entry
+struct DDayProvider: TimelineProvider {
+    func placeholder(in context: Context) -> DDayEntry {
+        DDayEntry(date: Date(), daysCount: 100, currentImageName: "image01")
+    }
 
-    var body: some View {
-        VStack {
-            Text("Time:")
-            Text(entry.date, style: .time)
+    func getSnapshot(in context: Context, completion: @escaping (DDayEntry) -> Void) {
+        let entry = DDayEntry(date: Date(), daysCount: 100, currentImageName: "image01")
+        completion(entry)
+    }
 
-            Text("Favorite Emoji:")
-            Text(entry.configuration.favoriteEmoji)
+    func getTimeline(in context: Context, completion: @escaping (Timeline<DDayEntry>) -> Void) {
+        let anniversaryDate = Calendar.current.date(from: DateComponents(year: 2023, month: 4, day: 5))!
+        let daysCount = Calendar.current.dateComponents([.day], from: anniversaryDate, to: Date()).day ?? 0
+        let currentImageName = (1...7).map { String(format: "image%02d", $0) }.randomElement() ?? "image01"
+        
+        var entries: [DDayEntry] = []
+        for hourOffset in 0..<5 {
+            let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: Date())!
+            let entry = DDayEntry(date: entryDate, daysCount: daysCount, currentImageName: currentImageName)
+            entries.append(entry)
         }
+        let timeline = Timeline(entries: entries, policy: .atEnd)
+        completion(timeline)
     }
 }
 
-struct HWYU_Widget: Widget {
-    let kind: String = "HWYU_Widget"
+struct DDayWidgetEntryView : View {
+    var entry: DDayEntry
+    @Environment(\.colorScheme) var colorScheme
+    
+    var body: some View {
+        VStack(spacing: 8) {
+            Text("우리가 함께한 지")
+                .font(.footnote)
+
+            HStack {
+                Text("\(entry.daysCount)")
+                    .font(.largeTitle)
+                    .fontWeight(.black)
+                    .italic()
+                
+                Image(systemName: "arrowshape.up.fill")
+            }
+            
+            Text("2023.04.05")
+                .font(.caption)
+                .foregroundStyle(.gray)
+        }
+        .containerBackground(.fill, for: .widget)
+    }
+}
+
+struct DDayWidget: Widget {
+    let kind: String = "DDayWidget"
 
     var body: some WidgetConfiguration {
-        AppIntentConfiguration(kind: kind, intent: ConfigurationAppIntent.self, provider: Provider()) { entry in
-            HWYU_WidgetEntryView(entry: entry)
-                .containerBackground(.fill.tertiary, for: .widget)
-                
+        StaticConfiguration(kind: kind, provider: DDayProvider()) { entry in
+            DDayWidgetEntryView(entry: entry)
         }
-        .supportedFamilies([.systemSmall])
+        .configurationDisplayName("D-Day Countdown")
+        .description("Shows the number of days since a specific date.")
+        .supportedFamilies([.systemSmall, .systemMedium, .systemLarge])
     }
 }
 
-extension ConfigurationAppIntent {
-    fileprivate static var smiley: ConfigurationAppIntent {
-        let intent = ConfigurationAppIntent()
-        intent.favoriteEmoji = "😀"
-        return intent
+struct DDayWidget_Previews: PreviewProvider {
+    static var previews: some View {
+        DDayWidgetEntryView(entry: DDayEntry(date: Date(), daysCount: 100, currentImageName: "image01"))
+            .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
-    
-    fileprivate static var starEyes: ConfigurationAppIntent {
-        let intent = ConfigurationAppIntent()
-        intent.favoriteEmoji = "🤩"
-        return intent
-    }
-}
-
-#Preview(as: .systemSmall) {
-    HWYU_Widget()
-} timeline: {
-    SimpleEntry(date: .now, configuration: .smiley)
-    SimpleEntry(date: .now, configuration: .starEyes)
 }

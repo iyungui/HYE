@@ -11,7 +11,6 @@ import SwiftUI
 @main
 struct HWYU_WidgetBundle: WidgetBundle {
     var body: some Widget {
-        HWYU_Widget()
-        HWYU_WidgetLiveActivity()
+        DDayWidget()
     }
 }
