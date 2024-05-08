@@ -1,0 +1,11 @@
+version: "Apple Swift version 5.10 (swiftlang-5.10.0.13 clang-1500.3.9.4)"
+options: "6be9e8e5f58bb270e0e99b0cf98de49585c84f440d7366295dc1aa83067354e6"
+build_start_time: [1715170491, 986385000]
+build_end_time: [1715170494, 197843000]
+inputs:
+  ? "/Users/iyung-ui/Desktop/PROJECT/HWYU/DerivedData/HWYU/Index.noindex/Build/Intermediates.noindex/HWYU.build/Debug-iphoneos/HWYU_WidgetExtension.build/DerivedSources/GeneratedAssetSymbols.swift"
+  : [1715170488, 979825924]
+  "/Users/iyung-ui/Desktop/PROJECT/HWYU/HWYU_Widget/AppIntent.swift": [1715169999, 221464399]
+  "/Users/iyung-ui/Desktop/PROJECT/HWYU/HWYU_Widget/HWYU_Widget.swift": [1715127276, 475992835]
+  "/Users/iyung-ui/Desktop/PROJECT/HWYU/HWYU_Widget/HWYU_WidgetBundle.swift": [1715169993, 42578653]
+  "/Users/iyung-ui/Desktop/PROJECT/HWYU/HWYU_Widget/HWYU_WidgetLiveActivity.swift": [1702478959, 78023910]

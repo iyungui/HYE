@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 63;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -33,13 +33,10 @@
 		C6EFA81B2BE8D77500AA4686 /* SCDream8.otf in Resources */ = {isa = PBXBuildFile; fileRef = C6EFA8102BE8D77400AA4686 /* SCDream8.otf */; };
 		C6EFA81C2BE8D77500AA4686 /* SCDream9.otf in Resources */ = {isa = PBXBuildFile; fileRef = C6EFA8112BE8D77400AA4686 /* SCDream9.otf */; };
 		C6F394A42BEB729900087C4E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C6F394A32BEB729900087C4E /* GoogleService-Info.plist */; };
-		C6FB40192B48E40A001FBA6D /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = C6FB40182B48E40A001FBA6D /* FirebaseAuth */; };
 		C6FB401B2B48E40A001FBA6D /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = C6FB401A2B48E40A001FBA6D /* FirebaseDatabase */; };
 		C6FB401D2B48E40A001FBA6D /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = C6FB401C2B48E40A001FBA6D /* FirebaseFirestore */; };
-		C6FB401F2B48E40A001FBA6D /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = C6FB401E2B48E40A001FBA6D /* FirebaseStorage */; };
 		C6FB40222B48E866001FBA6D /* DDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FB40212B48E866001FBA6D /* DDayView.swift */; };
 		C6FB40262B490710001FBA6D /* FirebaseFunctions in Frameworks */ = {isa = PBXBuildFile; productRef = C6FB40252B490710001FBA6D /* FirebaseFunctions */; };
-		C6FB402A2B49919E001FBA6D /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = C6FB40292B49919E001FBA6D /* FirebaseAppCheck */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,8 +100,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C6FB40192B48E40A001FBA6D /* FirebaseAuth in Frameworks */,
-				C6FB401F2B48E40A001FBA6D /* FirebaseStorage in Frameworks */,
 				C6FB401D2B48E40A001FBA6D /* FirebaseFirestore in Frameworks */,
 				C6FB401B2B48E40A001FBA6D /* FirebaseDatabase in Frameworks */,
 				C6FB40262B490710001FBA6D /* FirebaseFunctions in Frameworks */,
@@ -116,7 +111,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C6167BBE2B29FBEF00A611E4 /* SwiftUI.framework in Frameworks */,
-				C6FB402A2B49919E001FBA6D /* FirebaseAppCheck in Frameworks */,
 				C6167BBC2B29FBEF00A611E4 /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -227,6 +221,7 @@
 				C61174F52B287BCD0096FB5F /* Frameworks */,
 				C61174F62B287BCD0096FB5F /* Resources */,
 				C6167BCE2B29FBF100A611E4 /* Embed Foundation Extensions */,
+				C6F394A72BEBA5D700087C4E /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -235,10 +230,8 @@
 			);
 			name = HWYU;
 			packageProductDependencies = (
-				C6FB40182B48E40A001FBA6D /* FirebaseAuth */,
 				C6FB401A2B48E40A001FBA6D /* FirebaseDatabase */,
 				C6FB401C2B48E40A001FBA6D /* FirebaseFirestore */,
-				C6FB401E2B48E40A001FBA6D /* FirebaseStorage */,
 				C6FB40252B490710001FBA6D /* FirebaseFunctions */,
 			);
 			productName = HWYU;
@@ -259,7 +252,6 @@
 			);
 			name = HWYU_WidgetExtension;
 			packageProductDependencies = (
-				C6FB40292B49919E001FBA6D /* FirebaseAppCheck */,
 			);
 			productName = HWYU_WidgetExtension;
 			productReference = C6167BB92B29FBEE00A611E4 /* HWYU_WidgetExtension.appex */;
@@ -284,7 +276,7 @@
 				};
 			};
 			buildConfigurationList = C61174F32B287BCD0096FB5F /* Build configuration list for PBXProject "HWYU" */;
-			compatibilityVersion = "Xcode 14.0";
+			compatibilityVersion = "Xcode 15.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -336,6 +328,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		C6F394A72BEBA5D700087C4E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/bash;
+			shellScript = "#!/bin/bash\n\n# Path to the build products directory\nBUILD_PRODUCTS_DIR=\"${TARGET_BUILD_DIR}\"\n\n# Correct CFBundleIdentifier and CFBundleExecutable\nfunction correctFramework() {\n    local frameworkPath=\"$1\"\n    local plistPath=\"$frameworkPath/Info.plist\"\n\n    if [ -f \"$plistPath\" ]; then\n        # Correct the CFBundleIdentifier if it contains '++'\n        local bundleID=$(/usr/libexec/PlistBuddy -c \"Print CFBundleIdentifier\" \"$plistPath\")\n        if [[ \"$bundleID\" == *\"++\"* ]]; then\n            echo \"Correcting CFBundleIdentifier in $plistPath\"\n            bundleID=\"${bundleID//++/CPP}\"\n            /usr/libexec/PlistBuddy -c \"Set :CFBundleIdentifier $bundleID\" \"$plistPath\"\n        fi\n\n        # Correct the CFBundleExecutable if it contains '++'\n        local executableName=$(/usr/libexec/PlistBuddy -c \"Print CFBundleExecutable\" \"$plistPath\")\n        if [[ \"$executableName\" == *\"++\"* ]]; then\n            echo \"Correcting CFBundleExecutable in $plistPath\"\n            executableName=\"${executableName//++/CPP}\"\n            /usr/libexec/PlistBuddy -c \"Set :CFBundleExecutable $executableName\" \"$plistPath\"\n        fi\n\n        # Ensure MinimumOSVersion is set to 9.0\n        echo \"Setting MinimumOSVersion to 9.0 in $plistPath\"\n        /usr/libexec/PlistBuddy -c \"Set :MinimumOSVersion 9.0\" \"$plistPath\"\n    else\n        echo \"Info.plist not found for $frameworkPath\"\n    fi\n}\n\n# Directories containing frameworks\ndirectories=(\"$BUILD_PRODUCTS_DIR/Frameworks\" \"$BUILD_PRODUCTS_DIR/PlugIns\")\n\n# Loop through potential directories containing frameworks\nfor dir in \"${directories[@]}\"; do\n    if [ -d \"$dir\" ]; then\n        # Loop through each framework in the directory\n        for framework in \"$dir\"/*.framework; do\n            if [ -d \"$framework\" ]; then\n                echo \"Processing $framework\"\n                correctFramework \"$framework\"\n            fi\n        done\n    fi\ndone\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C61174F42B287BCD0096FB5F /* Sources */ = {
@@ -514,6 +526,7 @@
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -554,6 +567,7 @@
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -591,10 +605,10 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.iyungui.HYE;
+				PRODUCT_BUNDLE_IDENTIFIER = com.iyungui.HYE.WidgetExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = HYE;
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "HWYU Widget Extension";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -622,10 +636,10 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.iyungui.HYE;
+				PRODUCT_BUNDLE_IDENTIFIER = com.iyungui.HYE.WidgetExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = HYE_adhoc;
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "HWYU Widget Extension_adhoc";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -677,11 +691,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		C6FB40182B48E40A001FBA6D /* FirebaseAuth */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C6FB400D2B48DB68001FBA6D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAuth;
-		};
 		C6FB401A2B48E40A001FBA6D /* FirebaseDatabase */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = C6FB400D2B48DB68001FBA6D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
@@ -692,20 +701,10 @@
 			package = C6FB400D2B48DB68001FBA6D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
 		};
-		C6FB401E2B48E40A001FBA6D /* FirebaseStorage */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C6FB400D2B48DB68001FBA6D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseStorage;
-		};
 		C6FB40252B490710001FBA6D /* FirebaseFunctions */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = C6FB400D2B48DB68001FBA6D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFunctions;
-		};
-		C6FB40292B49919E001FBA6D /* FirebaseAppCheck */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C6FB400D2B48DB68001FBA6D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAppCheck;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

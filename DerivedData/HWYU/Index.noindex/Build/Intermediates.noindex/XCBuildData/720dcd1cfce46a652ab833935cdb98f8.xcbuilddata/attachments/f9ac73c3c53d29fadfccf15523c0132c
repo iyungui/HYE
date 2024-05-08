@@ -1,0 +1,27 @@
+{
+  "" : {
+    "dependencies" : "/Users/iyung-ui/Desktop/PROJECT/HWYU/DerivedData/HWYU/Index.noindex/Build/Intermediates.noindex/HWYU.build/Debug-iphonesimulator/HWYU.build/Objects-normal/arm64/HWYU-master.d",
+    "diagnostics" : "/Users/iyung-ui/Desktop/PROJECT/HWYU/DerivedData/HWYU/Index.noindex/Build/Intermediates.noindex/HWYU.build/Debug-iphonesimulator/HWYU.build/Objects-normal/arm64/HWYU-master.dia",
+    "emit-module-dependencies" : "/Users/iyung-ui/Desktop/PROJECT/HWYU/DerivedData/HWYU/Index.noindex/Build/Intermediates.noindex/HWYU.build/Debug-iphonesimulator/HWYU.build/Objects-normal/arm64/HWYU-master-emit-module.d",
+    "emit-module-diagnostics" : "/Users/iyung-ui/Desktop/PROJECT/HWYU/DerivedData/HWYU/Index.noindex/Build/Intermediates.noindex/HWYU.build/Debug-iphonesimulator/HWYU.build/Objects-normal/arm64/HWYU-master-emit-module.dia",
+    "swift-dependencies" : "/Users/iyung-ui/Desktop/PROJECT/HWYU/DerivedData/HWYU/Index.noindex/Build/Intermediates.noindex/HWYU.build/Debug-iphonesimulator/HWYU.build/Objects-normal/arm64/HWYU-master.swiftdeps"
+  },
+  "/Users/iyung-ui/Desktop/PROJECT/HWYU/DerivedData/HWYU/Index.noindex/Build/Intermediates.noindex/HWYU.build/Debug-iphonesimulator/HWYU.build/DerivedSources/GeneratedAssetSymbols.swift" : {
+
+  },
+  "/Users/iyung-ui/Desktop/PROJECT/HWYU/HWYU/ContentView.swift" : {
+
+  },
+  "/Users/iyung-ui/Desktop/PROJECT/HWYU/HWYU/DDayView.swift" : {
+
+  },
+  "/Users/iyung-ui/Desktop/PROJECT/HWYU/HWYU/HWYUApp.swift" : {
+
+  },
+  "/Users/iyung-ui/Desktop/PROJECT/HWYU/HWYU/Ment.swift" : {
+
+  },
+  "/Users/iyung-ui/Desktop/PROJECT/HWYU/HWYU/MentService.swift" : {
+
+  }
+}

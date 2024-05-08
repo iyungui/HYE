@@ -1,0 +1,12 @@
+{
+  "" : {
+    "dependencies" : "/Users/iyung-ui/Desktop/PROJECT/HWYU/DerivedData/HWYU/Index.noindex/Build/Intermediates.noindex/Firebase.build/Debug-iphoneos/FirebaseInAppMessagingSwift.build/Objects-normal/arm64/FirebaseInAppMessagingSwift-master.d",
+    "diagnostics" : "/Users/iyung-ui/Desktop/PROJECT/HWYU/DerivedData/HWYU/Index.noindex/Build/Intermediates.noindex/Firebase.build/Debug-iphoneos/FirebaseInAppMessagingSwift.build/Objects-normal/arm64/FirebaseInAppMessagingSwift-master.dia",
+    "emit-module-dependencies" : "/Users/iyung-ui/Desktop/PROJECT/HWYU/DerivedData/HWYU/Index.noindex/Build/Intermediates.noindex/Firebase.build/Debug-iphoneos/FirebaseInAppMessagingSwift.build/Objects-normal/arm64/FirebaseInAppMessagingSwift-master-emit-module.d",
+    "emit-module-diagnostics" : "/Users/iyung-ui/Desktop/PROJECT/HWYU/DerivedData/HWYU/Index.noindex/Build/Intermediates.noindex/Firebase.build/Debug-iphoneos/FirebaseInAppMessagingSwift.build/Objects-normal/arm64/FirebaseInAppMessagingSwift-master-emit-module.dia",
+    "swift-dependencies" : "/Users/iyung-ui/Desktop/PROJECT/HWYU/DerivedData/HWYU/Index.noindex/Build/Intermediates.noindex/Firebase.build/Debug-iphoneos/FirebaseInAppMessagingSwift.build/Objects-normal/arm64/FirebaseInAppMessagingSwift-master.swiftdeps"
+  },
+  "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/FirebaseInAppMessagingSwift/Sources/FirebaseInAppMessagingSwift.swift" : {
+
+  }
+}

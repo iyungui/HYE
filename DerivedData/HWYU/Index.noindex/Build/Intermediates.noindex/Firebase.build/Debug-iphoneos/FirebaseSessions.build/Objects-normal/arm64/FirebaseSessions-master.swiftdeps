@@ -1,0 +1,57 @@
+version: "Apple Swift version 5.10 (swiftlang-5.10.0.13 clang-1500.3.9.4)"
+options: "4cbb92b509f37fe740656ae9d5d7a27ec9bc25767d9389b21ed10cf09856e5d3"
+build_start_time: [1715170499, 716916000]
+build_end_time: [1715170504, 738901000]
+inputs:
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/FirebaseSessions/Sources/ApplicationInfo.swift"
+  : [1715169146, 798870016]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/FirebaseSessions/Sources/Development/DevEventConsoleLogger.swift"
+  : [1715169146, 798987305]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/FirebaseSessions/Sources/Development/NanoPB+CustomStringConvertible.swift"
+  : [1715169146, 799096969]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/FirebaseSessions/Sources/EventGDTLogger.swift"
+  : [1715169146, 799171967]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/FirebaseSessions/Sources/FirebaseSessions.swift"
+  : [1715169146, 799339380]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/FirebaseSessions/Sources/FirebaseSessionsError.swift"
+  : [1715169146, 799416753]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/FirebaseSessions/Sources/GoogleDataTransport+GoogleDataTransportProtocol.swift"
+  : [1715169146, 799492418]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/FirebaseSessions/Sources/Installations+InstallationsProtocol.swift"
+  : [1715169146, 799560124]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/FirebaseSessions/Sources/Logger.swift"
+  : [1715169146, 799625414]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/FirebaseSessions/Sources/NetworkInfo.swift"
+  : [1715169146, 799693121]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/FirebaseSessions/Sources/Public/SessionsDependencies.swift"
+  : [1715169146, 799815243]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/FirebaseSessions/Sources/Public/SessionsProvider.swift"
+  : [1715169146, 799896616]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/FirebaseSessions/Sources/Public/SessionsSubscriber.swift"
+  : [1715169146, 799963240]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/FirebaseSessions/Sources/SessionCoordinator.swift"
+  : [1715169146, 800059029]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/FirebaseSessions/Sources/SessionGenerator.swift"
+  : [1715169146, 800141027]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/FirebaseSessions/Sources/SessionInitiator.swift"
+  : [1715169146, 800233650]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/FirebaseSessions/Sources/SessionStartEvent.swift"
+  : [1715169146, 800383938]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/FirebaseSessions/Sources/Settings/LocalOverrideSettings.swift"
+  : [1715169146, 800493227]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/FirebaseSessions/Sources/Settings/RemoteSettings.swift"
+  : [1715169146, 800578267]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/FirebaseSessions/Sources/Settings/SDKDefaultSettings.swift"
+  : [1715169146, 800652640]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/FirebaseSessions/Sources/Settings/SessionsSettings.swift"
+  : [1715169146, 800715513]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/FirebaseSessions/Sources/Settings/SettingsCacheClient.swift"
+  : [1715169146, 800799136]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/FirebaseSessions/Sources/Settings/SettingsDownloadClient.swift"
+  : [1715169146, 800889509]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/FirebaseSessions/Sources/Settings/SettingsProtocol.swift"
+  : [1715169146, 800961632]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/FirebaseSessions/Sources/Settings/SettingsProvider.swift"
+  : [1715169146, 801039797]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/FirebaseSessions/Sources/Time.swift"
+  : [1715169146, 801111254]

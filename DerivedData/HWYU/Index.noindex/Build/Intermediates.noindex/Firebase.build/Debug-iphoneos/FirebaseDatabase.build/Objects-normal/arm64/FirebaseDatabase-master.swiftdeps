@@ -1,0 +1,15 @@
+version: "Apple Swift version 5.10 (swiftlang-5.10.0.13 clang-1500.3.9.4)"
+options: "8c40eee08a8c2c39fd81fbbe7526c6b527523a8537b102568f3dff8f20486a02"
+build_start_time: [1715170491, 986501000]
+build_end_time: [1715170494, 196530000]
+inputs:
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/FirebaseDatabase/Swift/Sources/Codable/DataSnapshot+ReadDecodable.swift"
+  : [1715169146, 615530869]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/FirebaseDatabase/Swift/Sources/Codable/DatabaseReference+WriteEncodable.swift"
+  : [1715169146, 615612118]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/FirebaseDatabase/Swift/Sources/Codable/EncoderDecoder.swift"
+  : [1715169146, 615696532]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/FirebaseDatabase/Swift/Sources/Codable/ServerTimestamp.swift"
+  : [1715169146, 615784822]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/FirebaseDatabase/Swift/Sources/SPMSwiftHeaderWorkaround.swift"
+  : [1715169146, 615867070]

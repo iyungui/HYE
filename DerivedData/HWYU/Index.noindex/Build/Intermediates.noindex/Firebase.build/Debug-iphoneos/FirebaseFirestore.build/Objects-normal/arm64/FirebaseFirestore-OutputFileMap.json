@@ -1,0 +1,81 @@
+{
+  "" : {
+    "dependencies" : "/Users/iyung-ui/Desktop/PROJECT/HWYU/DerivedData/HWYU/Index.noindex/Build/Intermediates.noindex/Firebase.build/Debug-iphoneos/FirebaseFirestore.build/Objects-normal/arm64/FirebaseFirestore-master.d",
+    "diagnostics" : "/Users/iyung-ui/Desktop/PROJECT/HWYU/DerivedData/HWYU/Index.noindex/Build/Intermediates.noindex/Firebase.build/Debug-iphoneos/FirebaseFirestore.build/Objects-normal/arm64/FirebaseFirestore-master.dia",
+    "emit-module-dependencies" : "/Users/iyung-ui/Desktop/PROJECT/HWYU/DerivedData/HWYU/Index.noindex/Build/Intermediates.noindex/Firebase.build/Debug-iphoneos/FirebaseFirestore.build/Objects-normal/arm64/FirebaseFirestore-master-emit-module.d",
+    "emit-module-diagnostics" : "/Users/iyung-ui/Desktop/PROJECT/HWYU/DerivedData/HWYU/Index.noindex/Build/Intermediates.noindex/Firebase.build/Debug-iphoneos/FirebaseFirestore.build/Objects-normal/arm64/FirebaseFirestore-master-emit-module.dia",
+    "swift-dependencies" : "/Users/iyung-ui/Desktop/PROJECT/HWYU/DerivedData/HWYU/Index.noindex/Build/Intermediates.noindex/Firebase.build/Debug-iphoneos/FirebaseFirestore.build/Objects-normal/arm64/FirebaseFirestore-master.swiftdeps"
+  },
+  "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/Firestore/Swift/Source/AsyncAwait/CollectionReference+AsyncAwait.swift" : {
+
+  },
+  "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/Firestore/Swift/Source/AsyncAwait/Firestore+AsyncAwait.swift" : {
+
+  },
+  "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/Firestore/Swift/Source/Codable/CodableErrors.swift" : {
+
+  },
+  "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/Firestore/Swift/Source/Codable/CodablePassThroughTypes.swift" : {
+
+  },
+  "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/Firestore/Swift/Source/Codable/CollectionReference+WriteEncodable.swift" : {
+
+  },
+  "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/Firestore/Swift/Source/Codable/DocumentID.swift" : {
+
+  },
+  "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/Firestore/Swift/Source/Codable/DocumentReference+Codable.swift" : {
+
+  },
+  "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/Firestore/Swift/Source/Codable/DocumentReference+ReadDecodable.swift" : {
+
+  },
+  "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/Firestore/Swift/Source/Codable/DocumentReference+WriteEncodable.swift" : {
+
+  },
+  "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/Firestore/Swift/Source/Codable/DocumentSnapshot+ReadDecodable.swift" : {
+
+  },
+  "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/Firestore/Swift/Source/Codable/EncoderDecoder.swift" : {
+
+  },
+  "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/Firestore/Swift/Source/Codable/ExplicitNull.swift" : {
+
+  },
+  "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/Firestore/Swift/Source/Codable/FieldValue+Encodable.swift" : {
+
+  },
+  "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/Firestore/Swift/Source/Codable/GeoPoint+Codable.swift" : {
+
+  },
+  "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/Firestore/Swift/Source/Codable/ServerTimestamp.swift" : {
+
+  },
+  "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/Firestore/Swift/Source/Codable/Timestamp+Codable.swift" : {
+
+  },
+  "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/Firestore/Swift/Source/Codable/TimestampDecodingStrategy.swift" : {
+
+  },
+  "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/Firestore/Swift/Source/Codable/TimestampEncodingStrategy.swift" : {
+
+  },
+  "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/Firestore/Swift/Source/Codable/Transaction+WriteEncodable.swift" : {
+
+  },
+  "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/Firestore/Swift/Source/Codable/WriteBatch+WriteEncodable.swift" : {
+
+  },
+  "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/Firestore/Swift/Source/PropertyWrapper/FirestoreQuery.swift" : {
+
+  },
+  "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/Firestore/Swift/Source/PropertyWrapper/FirestoreQueryObservable.swift" : {
+
+  },
+  "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/Firestore/Swift/Source/PropertyWrapper/QueryPredicate.swift" : {
+
+  },
+  "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/Firestore/Swift/Source/SwiftHeaderWorkaround.swift" : {
+
+  }
+}

@@ -1,0 +1,4 @@
+module FirebaseAnalyticsWrapper {
+umbrella "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/FirebaseAnalyticsWrapper/include"
+export *
+}

@@ -1,0 +1,51 @@
+version: "Apple Swift version 5.10 (swiftlang-5.10.0.13 clang-1500.3.9.4)"
+options: "bd10b1a707ac7e72781df30d3328de084b46ba8ded1738c1c73889d009ae5874"
+build_start_time: [1715170494, 696844000]
+build_end_time: [1715170496, 617201000]
+inputs:
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/FirebaseStorage/Sources/AsyncAwait.swift"
+  : [1715169146, 810117454]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/FirebaseStorage/Sources/Internal/StorageDeleteTask.swift"
+  : [1715169146, 810593985]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/FirebaseStorage/Sources/Internal/StorageGetDownloadURLTask.swift"
+  : [1715169146, 810783813]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/FirebaseStorage/Sources/Internal/StorageGetMetadataTask.swift"
+  : [1715169146, 811016850]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/FirebaseStorage/Sources/Internal/StorageListTask.swift"
+  : [1715169146, 811277468]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/FirebaseStorage/Sources/Internal/StoragePath.swift"
+  : [1715169146, 811457006]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/FirebaseStorage/Sources/Internal/StorageTaskState.swift"
+  : [1715169146, 811624835]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/FirebaseStorage/Sources/Internal/StorageTokenAuthorizer.swift"
+  : [1715169146, 813918905]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/FirebaseStorage/Sources/Internal/StorageUpdateMetadataTask.swift"
+  : [1715169146, 814008528]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/FirebaseStorage/Sources/Internal/StorageUtils.swift"
+  : [1715169146, 814104276]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/FirebaseStorage/Sources/Result.swift"
+  : [1715169146, 814253439]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/FirebaseStorage/Sources/Storage.swift"
+  : [1715169146, 814367019]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/FirebaseStorage/Sources/StorageComponent.swift"
+  : [1715169146, 814470850]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/FirebaseStorage/Sources/StorageConstants.swift"
+  : [1715169146, 814548765]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/FirebaseStorage/Sources/StorageDownloadTask.swift"
+  : [1715169146, 814650471]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/FirebaseStorage/Sources/StorageError.swift"
+  : [1715169146, 814801134]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/FirebaseStorage/Sources/StorageListResult.swift"
+  : [1715169146, 815254206]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/FirebaseStorage/Sources/StorageMetadata.swift"
+  : [1715169146, 815970314]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/FirebaseStorage/Sources/StorageObservableTask.swift"
+  : [1715169146, 816150310]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/FirebaseStorage/Sources/StorageReference.swift"
+  : [1715169146, 816265474]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/FirebaseStorage/Sources/StorageTask.swift"
+  : [1715169146, 816357930]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/FirebaseStorage/Sources/StorageTaskSnapshot.swift"
+  : [1715169146, 816443803]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/FirebaseStorage/Sources/StorageUploadTask.swift"
+  : [1715169146, 816593008]

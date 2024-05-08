@@ -221,7 +221,6 @@ struct EggView: View {
                         }
                     }
                 }
-                .scrollIndicatorsFlash(onAppear: true)
                 .frame(height: 100)
 
             }

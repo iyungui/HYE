@@ -1,0 +1,45 @@
+{
+  "" : {
+    "dependencies" : "/Users/iyung-ui/Desktop/PROJECT/HWYU/DerivedData/HWYU/Index.noindex/Build/Intermediates.noindex/Firebase.build/Debug-iphoneos/FirebaseCoreInternal.build/Objects-normal/arm64/FirebaseCoreInternal-master.d",
+    "diagnostics" : "/Users/iyung-ui/Desktop/PROJECT/HWYU/DerivedData/HWYU/Index.noindex/Build/Intermediates.noindex/Firebase.build/Debug-iphoneos/FirebaseCoreInternal.build/Objects-normal/arm64/FirebaseCoreInternal-master.dia",
+    "emit-module-dependencies" : "/Users/iyung-ui/Desktop/PROJECT/HWYU/DerivedData/HWYU/Index.noindex/Build/Intermediates.noindex/Firebase.build/Debug-iphoneos/FirebaseCoreInternal.build/Objects-normal/arm64/FirebaseCoreInternal-master-emit-module.d",
+    "emit-module-diagnostics" : "/Users/iyung-ui/Desktop/PROJECT/HWYU/DerivedData/HWYU/Index.noindex/Build/Intermediates.noindex/Firebase.build/Debug-iphoneos/FirebaseCoreInternal.build/Objects-normal/arm64/FirebaseCoreInternal-master-emit-module.dia",
+    "swift-dependencies" : "/Users/iyung-ui/Desktop/PROJECT/HWYU/DerivedData/HWYU/Index.noindex/Build/Intermediates.noindex/Firebase.build/Debug-iphoneos/FirebaseCoreInternal.build/Objects-normal/arm64/FirebaseCoreInternal-master.swiftdeps"
+  },
+  "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/FirebaseCore/Internal/Sources/HeartbeatLogging/_ObjC_HeartbeatController.swift" : {
+
+  },
+  "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/FirebaseCore/Internal/Sources/HeartbeatLogging/_ObjC_HeartbeatsPayload.swift" : {
+
+  },
+  "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/FirebaseCore/Internal/Sources/HeartbeatLogging/Heartbeat.swift" : {
+
+  },
+  "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/FirebaseCore/Internal/Sources/HeartbeatLogging/HeartbeatController.swift" : {
+
+  },
+  "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/FirebaseCore/Internal/Sources/HeartbeatLogging/HeartbeatLoggingTestUtils.swift" : {
+
+  },
+  "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/FirebaseCore/Internal/Sources/HeartbeatLogging/HeartbeatsBundle.swift" : {
+
+  },
+  "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/FirebaseCore/Internal/Sources/HeartbeatLogging/HeartbeatsPayload.swift" : {
+
+  },
+  "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/FirebaseCore/Internal/Sources/HeartbeatLogging/HeartbeatStorage.swift" : {
+
+  },
+  "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/FirebaseCore/Internal/Sources/HeartbeatLogging/RingBuffer.swift" : {
+
+  },
+  "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/FirebaseCore/Internal/Sources/HeartbeatLogging/Storage.swift" : {
+
+  },
+  "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/FirebaseCore/Internal/Sources/HeartbeatLogging/StorageFactory.swift" : {
+
+  },
+  "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/FirebaseCore/Internal/Sources/HeartbeatLogging/WeakContainer.swift" : {
+
+  }
+}

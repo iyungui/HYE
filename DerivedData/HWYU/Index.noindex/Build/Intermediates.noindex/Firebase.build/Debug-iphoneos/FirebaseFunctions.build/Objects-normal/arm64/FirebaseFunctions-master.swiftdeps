@@ -1,0 +1,21 @@
+version: "Apple Swift version 5.10 (swiftlang-5.10.0.13 clang-1500.3.9.4)"
+options: "b479298dbbdb012ea6c7b8955ae2f856666df230bcc0607b7e42df7de90a5b14"
+build_start_time: [1715170494, 691276000]
+build_end_time: [1715170496, 619174000]
+inputs:
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/FirebaseFunctions/Sources/Callable+Codable.swift"
+  : [1715169146, 650768025]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/FirebaseFunctions/Sources/Functions.swift"
+  : [1715169146, 650890980]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/FirebaseFunctions/Sources/FunctionsError.swift"
+  : [1715169146, 651040393]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/FirebaseFunctions/Sources/HTTPSCallable.swift"
+  : [1715169146, 651151265]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/FirebaseFunctions/Sources/HTTPSCallableOptions.swift"
+  : [1715169146, 651224764]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/FirebaseFunctions/Sources/Internal/FunctionsComponent.swift"
+  : [1715169146, 651362927]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/FirebaseFunctions/Sources/Internal/FunctionsContext.swift"
+  : [1715169146, 651458841]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/FirebaseFunctions/Sources/Internal/FunctionsSerializer.swift"
+  : [1715169146, 651569006]

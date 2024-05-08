@@ -1,0 +1,51 @@
+version: "Apple Swift version 5.10 (swiftlang-5.10.0.13 clang-1500.3.9.4)"
+options: "8de998bec5f84f2ceec5f74d930852f36096d3e8ed9e88c8b37cc5938ea42265"
+build_start_time: [1715170510, 148527000]
+build_end_time: [1715170510, 375228000]
+inputs:
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/swift-protobuf/Sources/SwiftProtobufPluginLibrary/Array+Extensions.swift"
+  : [1715169145, 476133393]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/swift-protobuf/Sources/SwiftProtobufPluginLibrary/CodeGenerator.swift"
+  : [1715169145, 480991818]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/swift-protobuf/Sources/SwiftProtobufPluginLibrary/CodeGeneratorParameter.swift"
+  : [1715169145, 481223979]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/swift-protobuf/Sources/SwiftProtobufPluginLibrary/CodePrinter.swift"
+  : [1715169145, 481676885]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/swift-protobuf/Sources/SwiftProtobufPluginLibrary/Descriptor+Extensions.swift"
+  : [1715169145, 481832340]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/swift-protobuf/Sources/SwiftProtobufPluginLibrary/Descriptor.swift"
+  : [1715169145, 482513074]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/swift-protobuf/Sources/SwiftProtobufPluginLibrary/FieldNumbers.swift"
+  : [1715169145, 482865732]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/swift-protobuf/Sources/SwiftProtobufPluginLibrary/GeneratorOutputs.swift"
+  : [1715169145, 482969063]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/swift-protobuf/Sources/SwiftProtobufPluginLibrary/Google_Protobuf_Compiler_CodeGeneratorResponse+Extensions.swift"
+  : [1715169145, 483771335]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/swift-protobuf/Sources/SwiftProtobufPluginLibrary/Google_Protobuf_SourceCodeInfo+Extensions.swift"
+  : [1715169145, 483967997]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/swift-protobuf/Sources/SwiftProtobufPluginLibrary/NamingUtils.swift"
+  : [1715169145, 484190575]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/swift-protobuf/Sources/SwiftProtobufPluginLibrary/ProtoCompilerContext.swift"
+  : [1715169145, 484311614]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/swift-protobuf/Sources/SwiftProtobufPluginLibrary/ProtoFileToModuleMappings.swift"
+  : [1715169145, 484915016]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/swift-protobuf/Sources/SwiftProtobufPluginLibrary/ProvidesLocationPath.swift"
+  : [1715169145, 486476645]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/swift-protobuf/Sources/SwiftProtobufPluginLibrary/ProvidesSourceCodeLocation.swift"
+  : [1715169145, 486670265]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/swift-protobuf/Sources/SwiftProtobufPluginLibrary/StandardErrorOutputStream.swift"
+  : [1715169145, 486882719]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/swift-protobuf/Sources/SwiftProtobufPluginLibrary/StringUtils.swift"
+  : [1715169145, 486975966]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/swift-protobuf/Sources/SwiftProtobufPluginLibrary/SwiftLanguage.swift"
+  : [1715169145, 487263585]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/swift-protobuf/Sources/SwiftProtobufPluginLibrary/SwiftProtobufInfo.swift"
+  : [1715169145, 487396748]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/swift-protobuf/Sources/SwiftProtobufPluginLibrary/SwiftProtobufNamer.swift"
+  : [1715169145, 487570452]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/swift-protobuf/Sources/SwiftProtobufPluginLibrary/UnicodeScalar+Extensions.swift"
+  : [1715169145, 487970609]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/swift-protobuf/Sources/SwiftProtobufPluginLibrary/plugin.pb.swift"
+  : [1715169145, 488730174]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/swift-protobuf/Sources/SwiftProtobufPluginLibrary/swift_protobuf_module_mappings.pb.swift"
+  : [1715169145, 489609695]

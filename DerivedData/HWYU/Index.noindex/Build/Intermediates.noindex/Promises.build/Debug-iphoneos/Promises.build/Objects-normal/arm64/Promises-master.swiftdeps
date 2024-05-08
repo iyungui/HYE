@@ -1,0 +1,43 @@
+version: "Apple Swift version 5.10 (swiftlang-5.10.0.13 clang-1500.3.9.4)"
+options: "17420cb554310e8300ec75c35a818376f0dfb40a06e79355082de7419f46cb2d"
+build_start_time: [1715170499, 661553000]
+build_end_time: [1715170499, 713867000]
+inputs:
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/promises/Sources/Promises/Promise+All.swift"
+  : !dirty [1715169144, 947859224]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/promises/Sources/Promises/Promise+Always.swift"
+  : !dirty [1715169144, 948063552]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/promises/Sources/Promises/Promise+Any.swift"
+  : !dirty [1715169144, 948187758]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/promises/Sources/Promises/Promise+Async.swift"
+  : !dirty [1715169144, 948272172]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/promises/Sources/Promises/Promise+Await.swift"
+  : !dirty [1715169144, 948375711]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/promises/Sources/Promises/Promise+Catch.swift"
+  : !dirty [1715169144, 948499958]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/promises/Sources/Promises/Promise+Delay.swift"
+  : !dirty [1715169144, 948641955]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/promises/Sources/Promises/Promise+Do.swift"
+  : !dirty [1715169144, 948723995]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/promises/Sources/Promises/Promise+Race.swift"
+  : !dirty [1715169144, 948959406]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/promises/Sources/Promises/Promise+Recover.swift"
+  : !dirty [1715169144, 949113277]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/promises/Sources/Promises/Promise+Reduce.swift"
+  : !dirty [1715169144, 949199483]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/promises/Sources/Promises/Promise+Retry.swift"
+  : !dirty [1715169144, 949331855]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/promises/Sources/Promises/Promise+Testing.swift"
+  : !dirty [1715169144, 949436353]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/promises/Sources/Promises/Promise+Then.swift"
+  : !dirty [1715169144, 949525309]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/promises/Sources/Promises/Promise+Timeout.swift"
+  : !dirty [1715169144, 949599557]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/promises/Sources/Promises/Promise+Validate.swift"
+  : !dirty [1715169144, 949681930]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/promises/Sources/Promises/Promise+Wrap.swift"
+  : !dirty [1715169144, 949788178]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/promises/Sources/Promises/Promise.swift"
+  : !dirty [1715169144, 949872009]
+  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/promises/Sources/Promises/PromiseError.swift"
+  : !dirty [1715169144, 949940841]
