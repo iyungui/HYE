@@ -19,10 +19,6 @@
 		C6167BC72B29FBEF00A611E4 /* AppIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6167BC62B29FBEF00A611E4 /* AppIntent.swift */; };
 		C6167BC92B29FBF100A611E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6167BC82B29FBF100A611E4 /* Assets.xcassets */; };
 		C6167BCD2B29FBF100A611E4 /* HWYU_WidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = C6167BB92B29FBEE00A611E4 /* HWYU_WidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		C6EE80B92B4A8ED200735248 /* LetterBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EE80B82B4A8ED200735248 /* LetterBoxView.swift */; };
-		C6EE80BB2B4A8F8D00735248 /* WriteLetterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EE80BA2B4A8F8D00735248 /* WriteLetterView.swift */; };
-		C6EE80C32B4A985000735248 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EE80C22B4A985000735248 /* LoginView.swift */; };
-		C6EE80C82B4A9C5400735248 /* Letter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EE80C72B4A9C5400735248 /* Letter.swift */; };
 		C6EFA8022BE8C60400AA4686 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C6EFA8012BE8C60400AA4686 /* GoogleService-Info.plist */; };
 		C6EFA8052BE8D42000AA4686 /* TAEBAEK milkyway.otf in Resources */ = {isa = PBXBuildFile; fileRef = C6EFA8042BE8D40C00AA4686 /* TAEBAEK milkyway.otf */; };
 		C6EFA8062BE8D42100AA4686 /* TAEBAEK milkyway.otf in Resources */ = {isa = PBXBuildFile; fileRef = C6EFA8042BE8D40C00AA4686 /* TAEBAEK milkyway.otf */; };
@@ -35,7 +31,6 @@
 		C6EFA81A2BE8D77500AA4686 /* SCDream7.otf in Resources */ = {isa = PBXBuildFile; fileRef = C6EFA80F2BE8D77400AA4686 /* SCDream7.otf */; };
 		C6EFA81B2BE8D77500AA4686 /* SCDream8.otf in Resources */ = {isa = PBXBuildFile; fileRef = C6EFA8102BE8D77400AA4686 /* SCDream8.otf */; };
 		C6EFA81C2BE8D77500AA4686 /* SCDream9.otf in Resources */ = {isa = PBXBuildFile; fileRef = C6EFA8112BE8D77400AA4686 /* SCDream9.otf */; };
-		C6EFA81E2BE901DE00AA4686 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EFA81D2BE901DE00AA4686 /* AuthenticationViewModel.swift */; };
 		C6EFA8212BE9074E00AA4686 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = C6EFA8202BE9074E00AA4686 /* GoogleSignIn */; };
 		C6EFA8232BE9074E00AA4686 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C6EFA8222BE9074E00AA4686 /* GoogleSignInSwift */; };
 		C6FB40192B48E40A001FBA6D /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = C6FB40182B48E40A001FBA6D /* FirebaseAuth */; };
@@ -86,10 +81,6 @@
 		C6167BC62B29FBEF00A611E4 /* AppIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIntent.swift; sourceTree = "<group>"; };
 		C6167BC82B29FBF100A611E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C6167BCA2B29FBF100A611E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C6EE80B82B4A8ED200735248 /* LetterBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterBoxView.swift; sourceTree = "<group>"; };
-		C6EE80BA2B4A8F8D00735248 /* WriteLetterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteLetterView.swift; sourceTree = "<group>"; };
-		C6EE80C22B4A985000735248 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		C6EE80C72B4A9C5400735248 /* Letter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Letter.swift; sourceTree = "<group>"; };
 		C6EFA8012BE8C60400AA4686 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C6EFA8042BE8D40C00AA4686 /* TAEBAEK milkyway.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "TAEBAEK milkyway.otf"; path = "../../../../../Downloads/TAEBAEK milkyway.otf"; sourceTree = "<group>"; };
 		C6EFA8072BE8D53D00AA4686 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -102,7 +93,6 @@
 		C6EFA80F2BE8D77400AA4686 /* SCDream7.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SCDream7.otf; sourceTree = "<group>"; };
 		C6EFA8102BE8D77400AA4686 /* SCDream8.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SCDream8.otf; sourceTree = "<group>"; };
 		C6EFA8112BE8D77400AA4686 /* SCDream9.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SCDream9.otf; sourceTree = "<group>"; };
-		C6EFA81D2BE901DE00AA4686 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		C6FB40212B48E866001FBA6D /* DDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDayView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -159,14 +149,9 @@
 				C6EFA8072BE8D53D00AA4686 /* Info.plist */,
 				C6EFA8032BE8D40200AA4686 /* Font */,
 				C61174FB2B287BCD0096FB5F /* HWYUApp.swift */,
-				C6EFA81D2BE901DE00AA4686 /* AuthenticationViewModel.swift */,
-				C6EE80C72B4A9C5400735248 /* Letter.swift */,
 				C61174FD2B287BCD0096FB5F /* ContentView.swift */,
-				C6EE80C22B4A985000735248 /* LoginView.swift */,
 				C6FB40212B48E866001FBA6D /* DDayView.swift */,
-				C6EE80B82B4A8ED200735248 /* LetterBoxView.swift */,
 				C6EFA8012BE8C60400AA4686 /* GoogleService-Info.plist */,
-				C6EE80BA2B4A8F8D00735248 /* WriteLetterView.swift */,
 				C61174FF2B287BCE0096FB5F /* Assets.xcassets */,
 				C61175012B287BCE0096FB5F /* Preview Content */,
 			);
@@ -358,13 +343,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C6EE80BB2B4A8F8D00735248 /* WriteLetterView.swift in Sources */,
 				C61174FE2B287BCD0096FB5F /* ContentView.swift in Sources */,
 				C61174FC2B287BCD0096FB5F /* HWYUApp.swift in Sources */,
-				C6EE80C82B4A9C5400735248 /* Letter.swift in Sources */,
-				C6EFA81E2BE901DE00AA4686 /* AuthenticationViewModel.swift in Sources */,
-				C6EE80B92B4A8ED200735248 /* LetterBoxView.swift in Sources */,
-				C6EE80C32B4A985000735248 /* LoginView.swift in Sources */,
 				C6FB40222B48E866001FBA6D /* DDayView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -26,7 +26,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 @main
 struct HWYUApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-    @StateObject var authenticationViewModel = AuthenticationViewModel()
+    
     var body: some Scene {
         WindowGroup {
             DDayView()
