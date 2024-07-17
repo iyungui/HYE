@@ -17,10 +17,7 @@ class DDayViewModel: ObservableObject {
     
     @Published var currentDaysCount = 0
     @Published var currentImageName = "image01"
-    
-    @Published private var heartCount: Int = 0
-    @Published private var showEggView: Bool = false
-    
+        
     init() {
         countDay()
         loadImage()
@@ -28,11 +25,11 @@ class DDayViewModel: ObservableObject {
     
     // MARK: - Count Day
     
-    private func countDay() {
+    func countDay() {
         currentDaysCount = 0
         let targetCount = daysSinceStart()
         
-        Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { [weak self] timer in
+        Timer.scheduledTimer(withTimeInterval: 0.003, repeats: true) { [weak self] timer in
             guard let self = self else {
                 timer.invalidate()
                 return
@@ -56,7 +53,7 @@ class DDayViewModel: ObservableObject {
         return components.day ?? 0
     }
     
-    private func formatDate(_ date: Date) -> String {
+    func formatDate(_ date: Date) -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy.MM.dd"
         return formatter.string(from: date)
@@ -64,7 +61,7 @@ class DDayViewModel: ObservableObject {
     
     // MARK: - Load Image
     
-    private func loadImage() {
+    func loadImage() {
         var newImage: String
         repeat {
             newImage = imageNames.randomElement() ?? "image01"

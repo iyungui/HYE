@@ -8,68 +8,15 @@
 import SwiftUI
 
 struct DDayView: View {
-    let anniversaryDate = Calendar.current.date(from: DateComponents(year: 2023, month: 4, day: 5))!
+    @StateObject private var dDayViewModel = DDayViewModel()
     
-    var imageNames: [String] {
-        return (1...7).map { String(format: "image%02d", $0) }
-    }
-
-    @State var currentImageName: String = "image01"
-    
-    @State private var currentDaysCount = 0
-    
-    let timer = Timer.publish(every: 5, on: .main, in: .common).autoconnect()
-
-    private func reload() {
-        var newImage: String
-        repeat {
-            newImage = imageNames.randomElement() ?? "image01"
-        } while newImage == currentImageName
-        currentImageName = newImage
-    }
-    
-    private func recount() {
-        currentDaysCount = 0
-        Timer.scheduledTimer(withTimeInterval: 0.003, repeats: true) { timer in
-            if currentDaysCount < daysSinceAnniversary() {
-                currentDaysCount += 1
-            } else {
-                timer.invalidate()
-            }
-        }
-    }
-    
-    // Calculates the number of days since the anniversary
-    private func daysSinceAnniversary() -> Int {
-        let today = Date()
-        guard today > anniversaryDate else { return 0 }
-
-        let components = Calendar.current.dateComponents([.day], from: anniversaryDate, to: today)
-        return components.day ?? 0
-    }
-    
-    // Formats a date to "yyyy.MM.dd" format
-    private func formatDate(_ date: Date) -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy.MM.dd"
-        return formatter.string(from: date)
-    }
-
-    // Returns the current date as a string in "yyyy-MM-dd" format
-    private func currentDateString() -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
-        return formatter.string(from: Date())
-    }
-    
-    @State private var heartCount: Int = 0
     @State private var showEggView: Bool = false
-    
-    
+    @State private var heartCount: Int = 0
+
     var body: some View {
         NavigationStack {
             ZStack {
-                Image(currentImageName)
+                Image(dDayViewModel.currentImageName)
                     .resizable()
                     .scaledToFit()
                 
@@ -82,8 +29,8 @@ struct DDayView: View {
                             .font(Font.custom("GowunBatang-Bold", size: 17))
                         
                         Button {
-                            reload()
-                            recount()
+                            dDayViewModel.loadImage()
+                            dDayViewModel.countDay()
                         } label: {
                             Image(systemName: "heart.fill")
                                 .font(.title3)
@@ -98,7 +45,6 @@ struct DDayView: View {
                     HStack(spacing: 0) {
                         Button("우리") {
                             heartCount += 1
-                            print(heartCount)
                         }
                         .simultaneousGesture(LongPressGesture(minimumDuration: 2).onEnded { _ in
                             showEggView = true
@@ -106,7 +52,7 @@ struct DDayView: View {
                         .font(Font.custom("GowunBatang-Bold", size: 14))
                         .foregroundStyle(.gray)
                         
-                        Text("가 함께한 지 벌써 \(currentDaysCount)일!")
+                        Text("가 함께한 지 벌써 \(dDayViewModel.currentDaysCount)일!")
                             .font(Font.custom("GowunBatang-Bold", size: 14))
                             .foregroundStyle(.gray)
                     }
@@ -114,7 +60,7 @@ struct DDayView: View {
                     Spacer()
 
                     HStack {
-                        Text(formatDate(anniversaryDate))
+                        Text(dDayViewModel.formatDate(dDayViewModel.startDate))
 
                         NavigationLink(destination: MentView()) {
                             Image(systemName: "heart.fill")
@@ -126,7 +72,7 @@ struct DDayView: View {
                     .font(.headline)
                     .foregroundColor(.white)
 
-                    Text(currentDateString())
+                    Text(dDayViewModel.formatDate(Date()))
                         .font(.headline)
                         .foregroundColor(.white)
                         .padding(.bottom, 5)
@@ -135,11 +81,11 @@ struct DDayView: View {
                         Button {
                             heartCount = 0
                             withAnimation {
-                                reload()
-                                recount()
+                                dDayViewModel.loadImage()
+                                dDayViewModel.countDay()
                             }
                         } label: {
-                            Text("\(currentDaysCount)")
+                            Text("\(dDayViewModel.currentDaysCount)")
                                 .font(.largeTitle)
                                 .fontWeight(.black)
                                 .italic()
@@ -157,16 +103,6 @@ struct DDayView: View {
             .sheet(isPresented: $showEggView) {
                 EggView(showEggView: $showEggView, heartCount: $heartCount)
             }
-            .onAppear {
-                reload()
-                recount()
-            }
-            .onReceive(timer) { _ in
-                withAnimation {
-                    reload()
-                }
-            }
-            .navigationBarBackButtonHidden()
         }
     }
 }
