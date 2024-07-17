@@ -79,7 +79,7 @@ struct DDayView: View {
                 VStack(alignment: .center) {
                     HStack {
                         Text("혜원")
-                            .font(Font.custom("S-CoreDream-5Medium", size: 17))
+                            .font(Font.custom("GowunBatang-Bold", size: 17))
                         
                         Button {
                             reload()
@@ -91,7 +91,7 @@ struct DDayView: View {
                         }
 
                         Text("융의")
-                            .font(Font.custom("S-CoreDream-5Medium", size: 17))
+                            .font(Font.custom("GowunBatang-Bold", size: 17))
                     }
                     .padding(.vertical)
                     
@@ -103,11 +103,11 @@ struct DDayView: View {
                         .simultaneousGesture(LongPressGesture(minimumDuration: 2).onEnded { _ in
                             showEggView = true
                         })
-                        .font(Font.custom("S-CoreDream-5Medium", size: 14))
+                        .font(Font.custom("GowunBatang-Bold", size: 14))
                         .foregroundStyle(.gray)
                         
                         Text("가 함께한 지 벌써 \(currentDaysCount)일!")
-                            .font(Font.custom("S-CoreDream-5Medium", size: 14))
+                            .font(Font.custom("GowunBatang-Bold", size: 14))
                             .foregroundStyle(.gray)
                     }
                     

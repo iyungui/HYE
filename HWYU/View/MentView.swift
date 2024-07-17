@@ -114,7 +114,7 @@ struct AnimatedTextView: View {
             let opacityEffect = max(0.0, 1 - (distanceToCenter / (screenHeight / 2)))
             
             Text(ment.text)
-                .font(Font.custom("S-CoreDream-5Medium", size: 30))
+                .font(Font.custom("GowunBatang-Regular", size: 30))
                 .foregroundStyle(colorForType(ment.colorType))
                 .scaleEffect(scaleEffect)
                 .opacity(opacityEffect)
