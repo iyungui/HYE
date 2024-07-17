@@ -15,7 +15,6 @@ class AppDelegate: NSObject, UIApplicationDelegate {
        FirebaseApp.configure()
        return true
    }
-   
 }
 
 @main
@@ -24,7 +23,7 @@ struct HWYUApp: App {
     
     var body: some Scene {
         WindowGroup {
-            DDayView()
+            ContentView()
         }
     }
 }

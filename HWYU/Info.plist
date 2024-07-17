@@ -6,16 +6,8 @@
 	<string>9.0</string>
 	<key>UIAppFonts</key>
 	<array>
-		<string>TAEBAEK milkyway.otf</string>
-		<string>SCDream1.otf</string>
-		<string>SCDream2.otf</string>
-		<string>SCDream3.otf</string>
-		<string>SCDream4.otf</string>
-		<string>SCDream5.otf</string>
-		<string>SCDream6.otf</string>
-		<string>SCDream7.otf</string>
-		<string>SCDream8.otf</string>
-		<string>SCDream9.otf</string>
+		<string>GowunBatang-Regular.ttf</string>
+		<string>GowunBatang-Bold.ttf</string>
 	</array>
 </dict>
 </plist>
