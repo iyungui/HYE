@@ -116,7 +116,7 @@ struct DDayView: View {
                     HStack {
                         Text(formatDate(anniversaryDate))
 
-                        NavigationLink(destination: ContentView()) {
+                        NavigationLink(destination: MentView()) {
                             Image(systemName: "heart.fill")
                                 .foregroundColor(Color("mainColor"))
                         }
