@@ -10,7 +10,7 @@ import SwiftUI
 struct DDayView: View {
     @StateObject private var dDayViewModel = DDayViewModel()
     
-    @State private var showEggView: Bool = false
+    @State private var showLetter: Bool = false
 
     var body: some View {
         NavigationStack {
@@ -45,7 +45,7 @@ struct DDayView: View {
                         Button("우리") {
                         }
                         .simultaneousGesture(LongPressGesture(minimumDuration: 1.3).onEnded { _ in
-                            showEggView = true
+                            showLetter = true
                         })
                         .font(Font.custom("GowunBatang-Bold", size: 14))
                         .foregroundStyle(.gray)
@@ -97,8 +97,8 @@ struct DDayView: View {
 
                 }
             }
-            .sheet(isPresented: $showEggView) {
-                EggView(showEggView: $showEggView)
+            .sheet(isPresented: $showLetter) {
+                LetterListView()
             }
         }
     }
