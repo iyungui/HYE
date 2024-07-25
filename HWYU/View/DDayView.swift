@@ -59,11 +59,9 @@ struct DDayView: View {
 
                     HStack {
                         Text(dDayViewModel.formatDate(dDayViewModel.startDate))
-
-                        NavigationLink(destination: MentView()) {
-                            Image(systemName: "heart.fill")
-                                .foregroundColor(Color("mainColor"))
-                        }
+                        
+                        Image(systemName: "heart.fill")
+                            .foregroundColor(Color("mainColor"))
                         
                         Text("~")
                     }

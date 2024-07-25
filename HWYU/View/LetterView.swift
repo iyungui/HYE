@@ -61,8 +61,6 @@ struct LetterView: View {
         do {
             result = try String(contentsOfFile: pahts, encoding: .utf8)
             results = result.components(separatedBy: "\n")
-            print("results: \(results)")
-            print(results.count)
             return results
         } catch {
             print("Error: file read failed - \(error.localizedDescription)")

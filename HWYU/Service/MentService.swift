@@ -4,7 +4,7 @@
 //
 //  Created by 이융의 on 5/8/24.
 //
-
+/*
 import Firebase
 import FirebaseFirestore
 
@@ -113,3 +113,4 @@ class MentService: ObservableObject {
 }
 
 
+*/

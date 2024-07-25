@@ -6,7 +6,8 @@
 //
 
 import SwiftUI
-
+/*
+ 
 let gradientBackground = LinearGradient(
     gradient: Gradient(colors: [
         Color(red: 0.96, green: 0.91, blue: 0.83), // 연한 베이지
@@ -148,3 +149,5 @@ struct AnimatedTextView: View {
     }
 }
 
+ 
+ */
