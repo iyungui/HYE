@@ -61,7 +61,6 @@ struct MentView: View {
                 HStack {
                     Button {
                         service.addMent(text: textInput, created: Date(), colorType: .red) { success, message in
-                            print(message)
                             if success {
                                 textInput = ""
                             }
@@ -72,7 +71,6 @@ struct MentView: View {
                     }
                     Button {
                         service.addMent(text: textInput, created: Date(), colorType: .blue) { success, message in
-                            print(message)
                             if success {
                                 textInput = ""
                             }
