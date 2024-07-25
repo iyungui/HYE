@@ -9,5 +9,9 @@
 		<string>GowunBatang-Regular.ttf</string>
 		<string>GowunBatang-Bold.ttf</string>
 	</array>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>remote-notification</string>
+	</array>
 </dict>
 </plist>
