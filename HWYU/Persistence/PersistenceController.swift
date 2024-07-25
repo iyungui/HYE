@@ -5,7 +5,12 @@
 //  Created by Yungui Lee on 7/25/24.
 //
 
+import Foundation
 import CoreData
+import CloudKit
+import SwiftUI
+
+let gCloudKitContainerIdentifier = "iCloud.me.iyungui.HWYU"
 
 class PersistenceController {
     static let shared = NSPersistentContainer()
@@ -22,22 +27,3 @@ class PersistenceController {
         container.viewContext.automaticallyMergesChangesFromParent = true
     }
 }
-
-/*
- struct PersistenceController {
-     static let shared = PersistenceController()
-     
-     let container: NSPersistentCloudKitContainer
-     
-     init() {
-         container = NSPersistentCloudKitContainer(name: "Products")
-         container.loadPersistentStores { (storeDescription, error) in
-             if let error = error as NSError? {
-                 fatalError("Container load failed: \(error)")
-             }
-         }
-         container.viewContext.automaticallyMergesChangesFromParent = true
-     }
- }
-
- */
