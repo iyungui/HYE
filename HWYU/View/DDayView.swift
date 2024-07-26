@@ -60,8 +60,10 @@ struct DDayView: View {
                     HStack {
                         Text(dDayViewModel.formatDate(dDayViewModel.startDate))
                         
-                        Image(systemName: "heart.fill")
-                            .foregroundColor(Color("mainColor"))
+                        NavigationLink(destination: SharedLogsView()) {
+                            Image(systemName: "heart.fill")
+                                .foregroundColor(Color("mainColor"))
+                        }
                         
                         Text("~")
                     }
