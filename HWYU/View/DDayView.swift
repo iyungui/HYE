@@ -104,3 +104,6 @@ struct DDayView: View {
     }
 }
 
+#Preview {
+    DDayView()
+}

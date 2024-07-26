@@ -38,6 +38,7 @@ struct SharedLogsView: View {
     }
     
     @State var selectedLog: SharedLog?
+    @State private var showAddLogSheet: Bool = false
     
     var body: some View {
         ScrollView {
@@ -55,17 +56,31 @@ struct SharedLogsView: View {
                     }
                 }
             }
-            .navigationTitle("Shared Logs")
+            .padding(.top, 10)
+            .navigationTitle("공유 앨범")
             .toolbar {
                 ToolbarItemGroup(placement: .topBarTrailing) {
                     HStack {
-                        Image(systemName: "person.crop.circle.badge.checkmark")
-                            .foregroundStyle(.blue)
+                        Button(action: {
+                            
+                        }) {
+                            Image(systemName: "person.crop.circle.badge.checkmark")
+                        }
+                        
+                        Button(action: {
+                            showAddLogSheet = true
+                        }) {
+                            Image(systemName: "plus.circle")
+                        }
                     }
+                    .foregroundStyle(.green)
                 }
             }
             .sheet(item: $selectedLog) { log in
                 LogDetailView(log: log)
+            }
+            .sheet(isPresented: $showAddLogSheet) {
+                AddLogView()
             }
         }
         .gesture(
