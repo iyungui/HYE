@@ -13,16 +13,17 @@ struct DDayView: View {
     
     @State private var showLetter: Bool = false
     
+    @State private var selectedImage: UIImage?
+
     /// Swift Data
     @Query var images: [ImageModel]
     @Environment(\.modelContext) var modelContext
-
-    
+        
     var body: some View {
         NavigationStack {
             ZStack {
-                if let imageData = images.first?.imageData, let image = UIImage(data: imageData) {
-                    Image(uiImage: image)
+                if let imageData = selectedImage?.jpegData(compressionQuality: 1.0), let uiImage = UIImage(data: imageData) {
+                    Image(uiImage: uiImage)
                         .resizable()
                         .scaledToFit()
                 }
@@ -36,7 +37,6 @@ struct DDayView: View {
                             .font(Font.custom("GowunBatang-Bold", size: 17))
                         
                         Button {
-                            dDayViewModel.loadImage()
                             dDayViewModel.countDay()
                         } label: {
                             Image(systemName: "heart.fill")
@@ -86,7 +86,6 @@ struct DDayView: View {
                     HStack {
                         Button {
                             withAnimation {
-                                dDayViewModel.loadImage()
                                 dDayViewModel.countDay()
                             }
                         } label: {
@@ -105,9 +104,22 @@ struct DDayView: View {
 
                 }
             }
+            .onAppear {
+                loadRandomImage()
+            }
             .sheet(isPresented: $showLetter) {
                 LetterListView()
             }
+        }
+    }
+    
+    private func loadRandomImage() {
+        if let randomImageData = images.randomElement()?.imageData,
+           let randomImage = UIImage(data: randomImageData) {
+            selectedImage = randomImage
+        } else {
+            selectedImage = nil
+            print("SelectedImage is nil")
         }
     }
 }
