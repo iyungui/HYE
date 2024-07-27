@@ -7,69 +7,57 @@
 
 import SwiftUI
 import PhotosUI
-import SwiftData
 
 struct AddImageView: View {
     @Environment(\.dismiss) var dismiss
     @Environment(\.modelContext) var modelContext
     
-    @State var selectedPhotoItem: [PhotosPickerItem] = []
-    @State var data: Data?
+    @State var selectedPhotoItems: [PhotosPickerItem] = []
+    @State var selectedImages: [UIImage] = []
     @State private var showAlert: Bool = false
     @State private var alertMessage: String = ""
     
     var body: some View {
         NavigationStack {
-            Form {
-                Section {
-                    PhotosPicker(selection: $selectedPhotoItem, maxSelectionCount: 1, selectionBehavior: .default, matching: .images, preferredItemEncoding: .automatic) {
-                        if let data = data, let image = UIImage(data: data) {
-                            VStack(alignment: .center) {
-                                Image(uiImage: image)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(maxHeight: 300)
+            VStack {
+                PhotosPicker(selection: $selectedPhotoItems, maxSelectionCount: 10, selectionBehavior: .continuousAndOrdered, matching: .images, preferredItemEncoding: .automatic) {
+                    if selectedImages.isEmpty {
+                        ContentUnavailableView("No Photos", systemImage: "photo.on.rectangle", description: Text("To get started, select some photos below"))
+                            .frame(height: 300)
+                    } else {
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            LazyHStack {
+                                ForEach(selectedImages, id: \.self) { image in
+                                    Image(uiImage: image)
+                                        .resizable()
+                                        .scaledToFill()
+                                        .frame(width: 250, height: 250)
+                                        .clipShape(.rect(cornerRadius: 20))
+                                        .padding(.horizontal, 5)
+                                }
                             }
-                        } else {
-                            Label("사진 선택", systemImage: "photo.artframe")
+                            .padding(.horizontal)
                         }
-                    }.onChange(of: selectedPhotoItem) { _, newValue in
-                        guard let item = selectedPhotoItem.first else {
-                            return
-                        }
+                        .frame(height: 300)
+                    }
+                }
+                .onChange(of: selectedPhotoItems) { _, newItems in
+                    selectedImages.removeAll()
+                    for item in newItems {
                         item.loadTransferable(type: Data.self) { result in
                             switch result {
                             case .success(let data):
-                                if let data = data {
-                                    self.data = data
+                                if let data = data, let image = UIImage(data: data) {
+                                    selectedImages.append(image)
                                 }
-                            case .failure(let failure):
-                                print("Error: \(failure.localizedDescription)")
+                            case .failure(let error):
+                                print("Error: \(error.localizedDescription)")
                             }
                         }
                     }
-                } header: {
-                    Text("이미지")
-                }
-                
-                Section {
-                    Button(action: {
-                        if let data = data {
-                            addImage(imageData: data)
-                            showAlert = true
-                            alertMessage = "이미지가 성공적으로 업로드 되었습니다."
-                        } else {
-                            print("No Image Data")
-                            showAlert = true
-                            alertMessage = "이미지 업로드에 실패했습니다."
-                        }
-                    }) {
-                        Text("업로드").bold()
-                    }
-                    .disabled(data == nil)
                 }
             }
-            
+            .ignoresSafeArea()
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button(action: {
@@ -77,6 +65,23 @@ struct AddImageView: View {
                     }) {
                         Image(systemName: "xmark")
                     }
+                }
+                ToolbarItem(placement: .primaryAction) {
+                    Button(action: {
+                        if !selectedImages.isEmpty {
+                            addImages(images: selectedImages)
+                            showAlert = true
+                            alertMessage = "이미지가 성공적으로 업로드 되었습니다."
+                        } else {
+                            print("No Images Selected")
+                            showAlert = true
+                            alertMessage = "이미지 업로드에 실패했습니다."
+                        }
+                    }) {
+                        Text("업로드")
+                            .bold()
+                    }
+                    .disabled(selectedImages.isEmpty)
                 }
             }
             .alert("알림", isPresented: $showAlert) {
@@ -89,9 +94,13 @@ struct AddImageView: View {
         }
     }
     
-    private func addImage(imageData: Data) {
-        let newImageModel = ImageModel(imageData: imageData)
-        modelContext.insert(newImageModel)
+    private func addImages(images: [UIImage]) {
+        for image in images {
+            if let imageData = image.jpegData(compressionQuality: 1.0) {
+                let newImageModel = ImageModel(imageData: imageData)
+                modelContext.insert(newImageModel)
+            }
+        }
     }
 }
 

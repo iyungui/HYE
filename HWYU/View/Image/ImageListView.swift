@@ -77,6 +77,7 @@ struct ImageListView: View {
                 }
                 .sheet(isPresented: $showAddImageSheet) {
                     AddImageView()
+                        .presentationDetents([.medium, .large])
                 }
                 .alert("알림", isPresented: $showAlert) {
                     Button("네", role: .destructive) {
