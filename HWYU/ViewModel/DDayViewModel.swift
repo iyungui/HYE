@@ -11,16 +11,10 @@ import Combine
 class DDayViewModel: ObservableObject {
     let startDate = Calendar.current.date(from: DateComponents(year: 2023, month: 4, day: 5))!
     
-    var imageNames: [String] {
-        return (1...7).map { String(format: "image%02d", $0) }
-    }
-    
     @Published var currentDaysCount = 0
-    @Published var currentImageName = "image01"
         
     init() {
         countDay()
-        loadImage()
     }
     
     // MARK: - Count Day
@@ -57,15 +51,5 @@ class DDayViewModel: ObservableObject {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy.MM.dd"
         return formatter.string(from: date)
-    }
-    
-    // MARK: - Load Image
-    
-    func loadImage() {
-        var newImage: String
-        repeat {
-            newImage = imageNames.randomElement() ?? "image01"
-        } while newImage == currentImageName
-        currentImageName = newImage
     }
 }

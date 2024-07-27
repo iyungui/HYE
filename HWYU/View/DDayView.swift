@@ -12,7 +12,6 @@ struct DDayView: View {
     @StateObject private var dDayViewModel = DDayViewModel()
     
     @State private var showLetter: Bool = false
-    
     @State private var selectedImage: UIImage?
 
     /// Swift Data
@@ -37,7 +36,10 @@ struct DDayView: View {
                             .font(Font.custom("GowunBatang-Bold", size: 17))
                         
                         Button {
-                            dDayViewModel.countDay()
+                            withAnimation {
+                                dDayViewModel.countDay()
+                                loadRandomImage()
+                            }
                         } label: {
                             Image(systemName: "heart.fill")
                                 .font(.title3)
@@ -87,6 +89,7 @@ struct DDayView: View {
                         Button {
                             withAnimation {
                                 dDayViewModel.countDay()
+                                loadRandomImage()
                             }
                         } label: {
                             Text("\(dDayViewModel.currentDaysCount)")

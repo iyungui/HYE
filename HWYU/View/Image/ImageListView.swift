@@ -10,9 +10,8 @@ import SwiftData
 
 struct ImageListView: View {
     /// Swift Data
-    @Query var images: [ImageModel]
+    @Query(sort: \ImageModel.date, order: .reverse) var images: [ImageModel]
     @Environment(\.modelContext) var modelContext
-
     
     @State private var zoomLevel: CGFloat = 1.0
     
@@ -21,30 +20,28 @@ struct ImageListView: View {
         return Array(repeating: .init(.flexible(), spacing: 6), count: columnCount)
     }
     
-    @State var selectedImage: UIImage?
+    @State var selectedImage: ImageModel?
     @State private var showAddImageSheet: Bool = false
+    @State private var showAlert: Bool = false
     
     var body: some View {
         ScrollView {
             LazyVGrid(columns: columns, alignment: .center, spacing: 3, pinnedViews: []) {
                 ForEach(images) { image in
                     if let imageData = image.imageData, let uiImage = UIImage(data: imageData) {
-                        Button(action: {
-                            selectedImage = uiImage
-                        }) {
-                            Image(uiImage: uiImage)
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: UIScreen.main.bounds.width / CGFloat(columns.count), height: UIScreen.main.bounds.width / CGFloat(columns.count))
-                                .clipped()
-                                .contextMenu {
-                                    Button {
-                                        modelContext.delete(image)
-                                    } label: {
-                                        Label("삭제하기", systemImage: "trash")
-                                    }
+                        Image(uiImage: uiImage)
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: UIScreen.main.bounds.width / CGFloat(columns.count), height: UIScreen.main.bounds.width / CGFloat(columns.count))
+                            .clipped()
+                            .contextMenu {
+                                Button {
+                                    selectedImage = image
+                                    showAlert = true
+                                } label: {
+                                    Label("삭제하기", systemImage: "trash")
                                 }
-                        }
+                            }
                     }
                 }
             }
@@ -65,6 +62,20 @@ struct ImageListView: View {
             .sheet(isPresented: $showAddImageSheet) {
                 AddImageView()
             }
+            .alert("알림", isPresented: $showAlert) {
+                Button("네", role: .destructive) {
+                    if let image = selectedImage {
+                        modelContext.delete(image)
+                    } else {
+                        print("SelectedImage is nil")
+                    }
+                }
+                Button("취소", role: .cancel) {}
+                
+            } message: {
+                Text("정말로 삭제하시겠어요?")
+            }
+            
         }
         .gesture(
             MagnifyGesture()

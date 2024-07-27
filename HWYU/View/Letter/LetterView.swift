@@ -93,22 +93,24 @@ struct LetterDetailView: View {
                 .font(.body)
                 .padding()
             
-            Spacer()
             
-//            HStack {
-//                Spacer()
-//                Text("\(index + 1) / \(letterText.count)")
-//                    .font(.caption)
-//                    .foregroundStyle(.gray)
-//                    .padding()
-//            }
-//            .padding(.bottom)
+            HStack {
+                Spacer()
+                Text("\(index + 1) / \(letterText.count)")
+                    .font(.caption)
+                    .foregroundStyle(.gray)
+                    .padding()
+            }
+            .padding(.bottom)
             
             if index + 1 == letterText.count {
                 Button("안녕!") {
                     dismiss()
                 }
             }
+            
+            Spacer()
+
         }
         .padding()
     }

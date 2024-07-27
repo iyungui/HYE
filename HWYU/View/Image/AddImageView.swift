@@ -80,7 +80,9 @@ struct AddImageView: View {
                 }
             }
             .alert("알림", isPresented: $showAlert) {
-                Button("확인", role: .cancel) {}
+                Button("확인", role: .cancel) {
+                    dismiss()
+                }
             } message: {
                 Text(alertMessage)
             }

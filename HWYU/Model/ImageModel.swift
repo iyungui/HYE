@@ -11,6 +11,7 @@ import SwiftData
 @Model
 final class ImageModel: Identifiable {
     let id = UUID()
+    let date = Date()
     @Attribute(.externalStorage) var imageData: Data?
     
     init(imageData: Data) {
