@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftData
 
 @Model
-class ImageModel: Identifiable {
+final class ImageModel: Identifiable {
     let id = UUID()
     @Attribute(.externalStorage) var imageData: Data?
     

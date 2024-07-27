@@ -7,12 +7,16 @@
 
 import SwiftUI
 import PhotosUI
+import SwiftData
 
 struct AddImageView: View {
     @Environment(\.dismiss) var dismiss
+    @Environment(\.modelContext) var modelContext
+    
     @State var selectedPhotoItem: [PhotosPickerItem] = []
     @State var data: Data?
-    @State private var content: String = ""
+    @State private var showAlert: Bool = false
+    @State private var alertMessage: String = ""
     
     var body: some View {
         NavigationStack {
@@ -49,17 +53,20 @@ struct AddImageView: View {
                 }
                 
                 Section {
-                    TextField("여기에 텍스트를 입력하세요.", text: $content)
-                } header: {
-                    Text("한 줄 문장")
-                }
-                
-                Section {
                     Button(action: {
-                        
+                        if let data = data {
+                            addImage(imageData: data)
+                            showAlert = true
+                            alertMessage = "이미지가 성공적으로 업로드 되었습니다."
+                        } else {
+                            print("No Image Data")
+                            showAlert = true
+                            alertMessage = "이미지 업로드에 실패했습니다."
+                        }
                     }) {
                         Text("업로드").bold()
                     }
+                    .disabled(data == nil)
                 }
             }
             
@@ -72,10 +79,21 @@ struct AddImageView: View {
                     }
                 }
             }
+            .alert("알림", isPresented: $showAlert) {
+                Button("확인", role: .cancel) {}
+            } message: {
+                Text(alertMessage)
+            }
         }
+    }
+    
+    private func addImage(imageData: Data) {
+        let newImageModel = ImageModel(imageData: imageData)
+        modelContext.insert(newImageModel)
     }
 }
 
 #Preview {
     AddImageView()
+        .modelContainer(for: ImageModel.self, inMemory: true)
 }

@@ -6,19 +6,26 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct DDayView: View {
     @StateObject private var dDayViewModel = DDayViewModel()
     
     @State private var showLetter: Bool = false
-    @State private var showAddImageSheet: Bool = false
+    
+    /// Swift Data
+    @Query var images: [ImageModel]
+    @Environment(\.modelContext) var modelContext
 
+    
     var body: some View {
         NavigationStack {
             ZStack {
-                Image(dDayViewModel.currentImageName)
-                    .resizable()
-                    .scaledToFit()
+                if let imageData = images.first?.imageData, let image = UIImage(data: imageData) {
+                    Image(uiImage: image)
+                        .resizable()
+                        .scaledToFit()
+                }
                 
                 LinearGradient(gradient: Gradient(colors: [.clear, .black.opacity(0.5)]), startPoint: .top, endPoint: .bottom)
                     .ignoresSafeArea()
@@ -61,9 +68,7 @@ struct DDayView: View {
                     HStack {
                         Text(dDayViewModel.formatDate(dDayViewModel.startDate))
                         
-                        Button(action: {
-                            showAddImageSheet = true
-                        }) {
+                        NavigationLink(destination: ImageListView()) {
                             Image(systemName: "heart.fill")
                                 .foregroundColor(Color("mainColor"))
                         }
@@ -103,13 +108,11 @@ struct DDayView: View {
             .sheet(isPresented: $showLetter) {
                 LetterListView()
             }
-            .sheet(isPresented: $showAddImageSheet) {
-                AddImageView()
-            }
         }
     }
 }
 
 #Preview {
     DDayView()
+        .modelContainer(for: ImageModel.self, inMemory: true)
 }
