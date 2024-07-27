@@ -12,7 +12,7 @@ struct DDayView: View {
     @StateObject private var dDayViewModel = DDayViewModel()
     
     @State private var showLetter: Bool = false
-    @State private var selectedImage: UIImage?
+    private let imageCache = ImageCache.shared
 
     /// Swift Data
     @Query var images: [ImageModel]
@@ -21,8 +21,8 @@ struct DDayView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                if let imageData = selectedImage?.jpegData(compressionQuality: 1.0), let uiImage = UIImage(data: imageData) {
-                    Image(uiImage: uiImage)
+                if let image = dDayViewModel.selectedImage {
+                    Image(uiImage: image)
                         .resizable()
                         .scaledToFit()
                 }
@@ -36,9 +36,8 @@ struct DDayView: View {
                             .font(Font.custom("GowunBatang-Bold", size: 17))
                         
                         Button {
-                            withAnimation {
-                                dDayViewModel.countDay()
-                                loadRandomImage()
+                            Task {
+                                await reloadPage()
                             }
                         } label: {
                             Image(systemName: "heart.fill")
@@ -87,9 +86,8 @@ struct DDayView: View {
 
                     HStack {
                         Button {
-                            withAnimation {
-                                dDayViewModel.countDay()
-                                loadRandomImage()
+                            Task {
+                                await reloadPage()
                             }
                         } label: {
                             Text("\(dDayViewModel.currentDaysCount)")
@@ -107,8 +105,8 @@ struct DDayView: View {
 
                 }
             }
-            .onAppear {
-                loadRandomImage()
+            .task {
+                await reloadPage()
             }
             .sheet(isPresented: $showLetter) {
                 LetterListView()
@@ -116,14 +114,9 @@ struct DDayView: View {
         }
     }
     
-    private func loadRandomImage() {
-        if let randomImageData = images.randomElement()?.imageData,
-           let randomImage = UIImage(data: randomImageData) {
-            selectedImage = randomImage
-        } else {
-            selectedImage = nil
-            print("SelectedImage is nil")
-        }
+    private func reloadPage() async {
+        await dDayViewModel.loadRandomImage(from: images)
+        await dDayViewModel.countDay()
     }
 }
 

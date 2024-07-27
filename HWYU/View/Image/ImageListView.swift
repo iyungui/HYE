@@ -12,13 +12,8 @@ struct ImageListView: View {
     /// Swift Data
     @Query(sort: \ImageModel.date, order: .reverse) var images: [ImageModel]
     @Environment(\.modelContext) var modelContext
-    
-    @State private var zoomLevel: CGFloat = 1.0
-    
-    var columns: [GridItem] {
-        let columnCount = zoomLevel < 1.5 ? 3 : 2
-        return Array(repeating: .init(.flexible(), spacing: 6), count: columnCount)
-    }
+        
+    var columns: [GridItem] = Array(repeating: .init(.flexible(), spacing: 6), count: 3)
     
     @State var selectedImage: ImageModel?
     @State private var showAddImageSheet: Bool = false
@@ -29,19 +24,26 @@ struct ImageListView: View {
             LazyVGrid(columns: columns, alignment: .center, spacing: 3, pinnedViews: []) {
                 ForEach(images) { image in
                     if let imageData = image.imageData, let uiImage = UIImage(data: imageData) {
-                        Image(uiImage: uiImage)
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width: UIScreen.main.bounds.width / CGFloat(columns.count), height: UIScreen.main.bounds.width / CGFloat(columns.count))
-                            .clipped()
-                            .contextMenu {
-                                Button {
-                                    selectedImage = image
-                                    showAlert = true
-                                } label: {
-                                    Label("삭제하기", systemImage: "trash")
+                        NavigationLink(destination: ImageDetailView(image: image)) {
+                            Image(uiImage: uiImage)
+                                .resizable()
+                                .scaledToFill()
+                                .frame(
+                                    width: UIScreen.main.bounds.width / 3,
+                                    height: UIScreen.main.bounds.width / 3
+                                )
+                                .clipped()
+                                .contextMenu {
+                                    Button {
+                                        selectedImage = image
+                                        showAlert = true
+                                    } label: {
+                                        Label("삭제하기", systemImage: "trash")
+                                            .foregroundStyle(.red)
+                                    }
+                                    
                                 }
-                            }
+                        }
                     }
                 }
             }
@@ -56,9 +58,6 @@ struct ImageListView: View {
                     }
                 }
             }
-//            .sheet(item: $selectedImage) { image in
-//                ImageDetailView(image: image)
-//            }
             .sheet(isPresented: $showAddImageSheet) {
                 AddImageView()
             }
@@ -75,48 +74,26 @@ struct ImageListView: View {
             } message: {
                 Text("정말로 삭제하시겠어요?")
             }
-            
         }
-        .gesture(
-            MagnifyGesture()
-                .onChanged { value in
-                    let newZoomLevel = zoomLevel * value.magnification
-                    if newZoomLevel >= 1.0 && newZoomLevel <= 2.0 {
-                        withAnimation {
-                            zoomLevel = newZoomLevel
-                        }
-                    }
-                }
-        )
     }
 }
 
-//
-//struct ImageDetailView: View {
-//    let image: UIImage
-//    @Environment(\.dismiss) var dismiss
-//    
-//    var body: some View {
-//        NavigationStack {
-//            VStack {
-//                Image(uiImage: image)
-//                    .resizable()
-//                    .scaledToFit()
-//                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-//            }
-//            .toolbar {
-//                ToolbarItem(placement: .cancellationAction) {
-//                    Button(action: {
-//                        dismiss()
-//                    }) {
-//                        Image(systemName: "xmark")
-//                            .foregroundStyle(.gray)
-//                    }
-//                }
-//            }
-//        }
-//    }
-//}
+
+struct ImageDetailView: View {
+    let image: ImageModel
+    
+    
+    var body: some View {
+        VStack {
+            if let imageData = image.imageData, let uiImage = UIImage(data: imageData) {
+                Image(uiImage: uiImage)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+            }
+        }
+    }
+}
 
 #Preview {
     NavigationStack {

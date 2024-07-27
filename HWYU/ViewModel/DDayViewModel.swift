@@ -7,35 +7,30 @@
 
 import Foundation
 import Combine
+import UIKit
 
 class DDayViewModel: ObservableObject {
     let startDate = Calendar.current.date(from: DateComponents(year: 2023, month: 4, day: 5))!
     
     @Published var currentDaysCount = 0
-        
-    init() {
-        countDay()
-    }
+    @Published var selectedImage: UIImage?
+    private let imageCache = ImageCache.shared
     
     // MARK: - Count Day
     
-    func countDay() {
+    func countDay() async {
         currentDaysCount = 0
         let targetCount = daysSinceStart()
-        
-        Timer.scheduledTimer(withTimeInterval: 0.003, repeats: true) { [weak self] timer in
-            guard let self = self else {
-                timer.invalidate()
-                return
+
+        for i in 0...targetCount {
+            DispatchQueue.main.async {
+                self.currentDaysCount = i
             }
-            
-            if self.currentDaysCount < targetCount {
-                self.currentDaysCount += 1
-            } else {
-                timer.invalidate()
-            }
+            try? await Task.sleep(for: .milliseconds(3))
         }
     }
+
+
     
     // Calculates the number of days since the start
     private func daysSinceStart() -> Int {
@@ -52,4 +47,30 @@ class DDayViewModel: ObservableObject {
         formatter.dateFormat = "yyyy.MM.dd"
         return formatter.string(from: date)
     }
+    
+    // MARK: - Load Random Image
+    
+    func loadRandomImage(from images: [ImageModel]) async {
+        guard let randomImage = images.randomElement() else {
+            selectedImage = nil
+            print("No images available")
+            return
+        }
+        
+        let imageId = randomImage.id.uuidString
+        
+        if let cachedImage = imageCache.getImage(forKey: imageId) {
+            selectedImage = cachedImage
+            print("getImage")
+        } else if let imageData = randomImage.imageData, let uiImage = UIImage(data: imageData) {
+            imageCache.setImage(uiImage, forKey: imageId)
+            selectedImage = uiImage
+            print("setImage")
+
+        } else {
+            selectedImage = nil
+            print("Failed to load image")
+        }
+    }
 }
+
