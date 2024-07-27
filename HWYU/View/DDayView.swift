@@ -11,6 +11,7 @@ struct DDayView: View {
     @StateObject private var dDayViewModel = DDayViewModel()
     
     @State private var showLetter: Bool = false
+    @State private var showAddImageSheet: Bool = false
 
     var body: some View {
         NavigationStack {
@@ -60,7 +61,9 @@ struct DDayView: View {
                     HStack {
                         Text(dDayViewModel.formatDate(dDayViewModel.startDate))
                         
-                        NavigationLink(destination: SharedLogsView()) {
+                        Button(action: {
+                            showAddImageSheet = true
+                        }) {
                             Image(systemName: "heart.fill")
                                 .foregroundColor(Color("mainColor"))
                         }
@@ -99,6 +102,9 @@ struct DDayView: View {
             }
             .sheet(isPresented: $showLetter) {
                 LetterListView()
+            }
+            .sheet(isPresented: $showAddImageSheet) {
+                AddImageView()
             }
         }
     }

@@ -1,5 +1,5 @@
 //
-//  AddLogView.swift
+//  AddImageView.swift
 //  HWYU
 //
 //  Created by Yungui Lee on 7/26/24.
@@ -8,7 +8,7 @@
 import SwiftUI
 import PhotosUI
 
-struct AddLogView: View {
+struct AddImageView: View {
     @Environment(\.dismiss) var dismiss
     @State var selectedPhotoItem: [PhotosPickerItem] = []
     @State var data: Data?
@@ -77,5 +77,5 @@ struct AddLogView: View {
 }
 
 #Preview {
-    AddLogView()
+    AddImageView()
 }
