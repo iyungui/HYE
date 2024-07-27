@@ -22,7 +22,7 @@ struct AddImageView: View {
             VStack {
                 PhotosPicker(selection: $selectedPhotoItems, maxSelectionCount: 10, selectionBehavior: .continuousAndOrdered, matching: .images, preferredItemEncoding: .automatic) {
                     if selectedImages.isEmpty {
-                        ContentUnavailableView("No Photos", systemImage: "photo.on.rectangle", description: Text("To get started, select some photos below"))
+                        ContentUnavailableView("사진 선택", systemImage: "photo.on.rectangle", description: Text("한 번에 여러 개의 사진을 추가할 수 있어요."))
                             .frame(height: 300)
                     } else {
                         ScrollView(.horizontal, showsIndicators: false) {
@@ -78,7 +78,7 @@ struct AddImageView: View {
                             alertMessage = "이미지 업로드에 실패했습니다."
                         }
                     }) {
-                        Text("업로드")
+                        Text("추가")
                             .bold()
                     }
                     .disabled(selectedImages.isEmpty)
