@@ -12,6 +12,7 @@ struct DDayView: View {
     @StateObject private var dDayViewModel = DDayViewModel()
     
     @State private var showLetter: Bool = false
+    @State private var showAlbum: Bool = false
     private let imageCache = ImageCache.shared
 
     /// Swift Data
@@ -69,7 +70,9 @@ struct DDayView: View {
                     HStack {
                         Text(dDayViewModel.formatDate(dDayViewModel.startDate))
                         
-                        NavigationLink(destination: ImageListView()) {
+                        Button(action: {
+                            showAlbum = true
+                        }) {
                             Image(systemName: "heart.fill")
                                 .foregroundColor(Color("mainColor"))
                         }
@@ -110,6 +113,9 @@ struct DDayView: View {
             }
             .sheet(isPresented: $showLetter) {
                 LetterListView()
+            }
+            .fullScreenCover(isPresented: $showAlbum) {
+                ImageListView().environmentObject(dDayViewModel)
             }
         }
     }
