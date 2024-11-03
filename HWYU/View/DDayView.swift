@@ -6,15 +6,12 @@
 //
 
 import SwiftUI
-import SwiftData
 
 struct DDayView: View {
-    @StateObject private var dDayViewModel: DDayViewModel
+//    @StateObject private var dDayViewModel: DDayViewModel
     @State private var images: [UIImage] = []
     
-    init() {
-        _dDayViewModel = StateObject(wrappedValue: DDayViewModel(cloudKitManager: CloudKitManager()))
-    }
+    @EnvironmentObject private var dDayViewModel: DDayViewModel
     
     @State private var showLetter: Bool = false
     @State private var showAlbum: Bool = false
@@ -109,7 +106,8 @@ struct DDayView: View {
                 }
             }
             .task {
-                await reloadPage()
+                await dDayViewModel.countDay()
+//                await reloadPage()
             }
             .sheet(isPresented: $showLetter) {
                 LetterListView()

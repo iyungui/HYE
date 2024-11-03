@@ -50,15 +50,17 @@ class DDayViewModel: ObservableObject {
         return formatter.string(from: date)
     }
     
+    @MainActor
     func loadRandomImage() async {
-        cloudKitManager.fetchRandomImage { randomImage in
-            DispatchQueue.main.async {
+        await withCheckedContinuation { continuation in
+            cloudKitManager.fetchRandomImage { randomImage in
                 if let image = randomImage {
                     self.selectedImage = image
                 } else {
                     self.selectedImage = nil
                     print("No images available.")
                 }
+                continuation.resume() // 작업 완료를 알림
             }
         }
     }
