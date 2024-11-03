@@ -1,4 +1,0 @@
-module leveldb {
-umbrella "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/leveldb/include"
-export *
-}

@@ -18,7 +18,7 @@ struct DDayView: View {
     /// Swift Data
     @Query var images: [ImageModel]
     @Environment(\.modelContext) var modelContext
-        
+    
     var body: some View {
         NavigationStack {
             ZStack {

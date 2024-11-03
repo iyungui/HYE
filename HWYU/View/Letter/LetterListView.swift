@@ -15,9 +15,9 @@ struct LetterListView: View {
         NavigationStack {
             List {
                 ForEach(letters) { letter in
-                    NavigationLink(destination: LetterView()) {
+                    NavigationLink(destination: LetterView(letter: letter)) {
                         VStack(alignment: .leading) {
-                            Text("\(letter.name)에게")
+                            Text(letter.title)
                                 .font(.headline)
                             Text(letter.date)
                                 .font(.subheadline)

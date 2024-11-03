@@ -1,7 +1,0 @@
-version: "Apple Swift version 5.10 (swiftlang-5.10.0.13 clang-1500.3.9.4)"
-options: "993084c777f883054439c774c1a5adede980ec86dee643d9d0b7c489b92dae46"
-build_start_time: [1715170516, 76957000]
-build_end_time: [1715170517, 47072000]
-inputs:
-  ? "/Users/iyung-ui/Library/Developer/Xcode/DerivedData/HWYU-aixqvdkwvxhzvvdikzluwcbivazv/SourcePackages/checkouts/firebase-ios-sdk/FirebaseFirestoreSwift/Sources/FirebaseFirestoreSwift.swift"
-  : [1715169146, 649762341]

@@ -9,16 +9,14 @@ import SwiftUI
 
 struct LetterView: View {
     @State private var currentPage: Int = 0
-
-    var letterText: [String] {
-        readTextFile()
-    }
     
+    let letter: Letter
+
     var body: some View {
         VStack {
             TabView(selection: $currentPage) {
-                ForEach(0..<letterText.count, id: \.self) { index in
-                    LetterDetailView(letterText: letterText, index: index)
+                ForEach(0..<letter.content.count, id: \.self) { index in
+                    LetterDetailView(letterText: letter.content, index: index)
                 }
             }
             .tabViewStyle(PageTabViewStyle())
@@ -39,33 +37,17 @@ struct LetterView: View {
                 Spacer()
 
                 Button(action: {
-                    if currentPage < letterText.count - 1 {
+                    if currentPage < letter.content.count - 1 {
                         currentPage += 1
                     }
                 }) {
                     Text("다음")
                 }
-                .disabled(currentPage == letterText.count - 1) // 마지막 페이지에서는 비활성화
+                .disabled(currentPage == letter.content.count - 1) // 마지막 페이지에서는 비활성화
             }
             .padding()
         }
         .padding()
-    }
-    
-    private func readTextFile() -> [String] {
-        // 파일을 담을 변수 생성
-        var result = ""
-        var results: Array<String>
-        
-        guard let pahts = Bundle.main.path(forResource: "LetterTextOne.txt", ofType: nil) else { return [] }
-        do {
-            result = try String(contentsOfFile: pahts, encoding: .utf8)
-            results = result.components(separatedBy: "\n")
-            return results
-        } catch {
-            print("Error: file read failed - \(error.localizedDescription)")
-            return []
-        }
     }
 }
 
@@ -90,14 +72,14 @@ struct LetterDetailView: View {
                 .padding()
             
             Text(letterText[index % letterText.count])
-                .font(.body)
+                .font(Font.custom("GowunBatang-Regular", size: 17))
                 .padding()
             
             
             HStack {
                 Spacer()
                 Text("\(index + 1) / \(letterText.count)")
-                    .font(.caption)
+                    .font(Font.custom("GowunBatang-Regular", size: 13))
                     .foregroundStyle(.gray)
                     .padding()
             }
@@ -117,5 +99,5 @@ struct LetterDetailView: View {
 }
 
 #Preview {
-    LetterView()
+    LetterView(letter: Letter.letterList.first!)
 }

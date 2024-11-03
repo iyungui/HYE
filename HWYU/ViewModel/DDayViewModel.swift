@@ -18,14 +18,14 @@ class DDayViewModel: ObservableObject {
     
     // MARK: - Count Day
     
+    @MainActor
     func countDay() async {
         currentDaysCount = 0
         let targetCount = daysSinceStart()
 
         for i in 0...targetCount {
-            DispatchQueue.main.async {
-                self.currentDaysCount = i
-            }
+            // 메인 스레드에서 실행되므로 DispatchQueue.main.async를 사용할 필요 없음
+            self.currentDaysCount = i
             try? await Task.sleep(for: .milliseconds(3))
         }
     }
