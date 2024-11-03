@@ -8,13 +8,14 @@
 import SwiftUI
 
 struct DDayView: View {
-//    @StateObject private var dDayViewModel: DDayViewModel
     @State private var images: [UIImage] = []
     
     @EnvironmentObject private var dDayViewModel: DDayViewModel
-    
     @State private var showLetter: Bool = false
     @State private var showAlbum: Bool = false
+
+    let emojis: [Emoji] = Emoji.emojis
+    @State private var currentEmoji: String = "heart.fill" // 초기 아이콘 설정
 
     var body: some View {
         NavigationStack {
@@ -25,7 +26,7 @@ struct DDayView: View {
                         .scaledToFit()
                 }
                 
-                LinearGradient(gradient: Gradient(colors: [.clear, .black.opacity(0.5)]), startPoint: .top, endPoint: .bottom)
+                LinearGradient(gradient: Gradient(colors: [.clear, .black.opacity(0.25)]), startPoint: .top, endPoint: .bottom)
                     .ignoresSafeArea()
 
                 VStack(alignment: .center) {
@@ -34,15 +35,19 @@ struct DDayView: View {
                             .font(Font.custom("GowunBatang-Bold", size: 17))
                         
                         Button {
-                            Task {
-                                await reloadPage()
-                            }
+                            // 누를 때마다 랜덤 이모지 선택
+                            currentEmoji = emojis.randomElement()?.content ?? "heart.fill"
                         } label: {
-                            Image(systemName: "heart.fill")
-                                .font(.title3)
-                                .foregroundColor(.green)
+                            if currentEmoji == "heart.fill" {
+                                Image(systemName: currentEmoji) // 처음엔 하트 아이콘
+                                    .font(.title3)
+                                    .foregroundColor(.green)
+                            } else {
+                                Text(currentEmoji) // 이모지로 변경
+                                    .font(.title3)
+                            }
                         }
-
+                        
                         Text("융의")
                             .font(Font.custom("GowunBatang-Bold", size: 17))
                     }
@@ -66,7 +71,8 @@ struct DDayView: View {
 
                     HStack {
                         Text(dDayViewModel.formatDate(dDayViewModel.startDate))
-                        
+                            .font(Font.custom("GowunBatang-Bold", size: 17))
+
                         Button(action: {
                             showAlbum = true
                         }) {
@@ -80,7 +86,7 @@ struct DDayView: View {
                     .foregroundColor(.white)
 
                     Text(dDayViewModel.formatDate(Date()))
-                        .font(.headline)
+                        .font(Font.custom("GowunBatang-Bold", size: 17))
                         .foregroundColor(.white)
                         .padding(.bottom, 5)
 
@@ -109,7 +115,7 @@ struct DDayView: View {
                 await dDayViewModel.countDay()
 //                await reloadPage()
             }
-            .sheet(isPresented: $showLetter) {
+            .fullScreenCover(isPresented: $showLetter) {
                 LetterListView()
             }
             .fullScreenCover(isPresented: $showAlbum) {
@@ -126,4 +132,5 @@ struct DDayView: View {
 
 #Preview {
     DDayView()
+        .environmentObject(DDayViewModel(cloudKitManager: CloudKitManager()))
 }
