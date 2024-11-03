@@ -16,13 +16,14 @@ class AppState: ObservableObject {
     init() {
         Task {
             await loadData()
+            dDayViewModel.subscribeToNewPhotoNotifications() // 구독 설정
         }
     }
     
     func loadData() async {
         await dDayViewModel.loadRandomImage()
         
-        try? await Task.sleep(nanoseconds: 1_500_000_000)
+//        try? await Task.sleep(nanoseconds: 1_500_000_000)
         
         DispatchQueue.main.async {
             self.isDataLoaded = (self.dDayViewModel.selectedImage != nil)

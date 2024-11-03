@@ -9,6 +9,7 @@ import SwiftUI
 
 @main
 struct HWYUApp: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate // AppDelegate 연결
     @StateObject private var appState = AppState()
 
     var body: some Scene {

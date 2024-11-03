@@ -140,6 +140,33 @@ class CloudKitManager: ObservableObject {
             }
         }
     }
+    
+    // MARK: - APNS
+    func subscribeToNewPhotos() {
+        // 고유한 식별자를 가진 구독 생성
+        let subscriptionID = "newPhotosSubscription"
+        let subscription = CKQuerySubscription(
+            recordType: "UserPhoto",
+            predicate: NSPredicate(value: true),
+            subscriptionID: subscriptionID,
+            options: .firesOnRecordCreation // 새 레코드 생성 시 알림
+        )
+
+        let notificationInfo = CKSubscription.NotificationInfo()
+        notificationInfo.alertBody = "앨범에 새 사진을 추가했어요."
+        notificationInfo.shouldBadge = true
+        notificationInfo.soundName = "default"
+        
+        subscription.notificationInfo = notificationInfo
+
+        database.save(subscription) { result, error in
+            if let error = error {
+                print("Error subscribing to new photos: \(error.localizedDescription)")
+            } else {
+                print("Successfully subscribed to new photos.")
+            }
+        }
+    }
 }
 extension UIImage {
     func resized(to targetSize: CGSize) -> UIImage? {

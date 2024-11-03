@@ -21,6 +21,12 @@ class DDayViewModel: ObservableObject {
     init(cloudKitManager: CloudKitManager) {
         self.cloudKitManager = cloudKitManager
     }
+    
+    // MARK: - APNS
+    func subscribeToNewPhotoNotifications() {
+        cloudKitManager.subscribeToNewPhotos()
+    }
+    
     // MARK: - Count Day
     
     @MainActor
