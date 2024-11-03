@@ -9,11 +9,9 @@ import SwiftUI
 
 @main
 struct HWYUApp: App {
-    
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .modelContainer(for: ImageModel.self)
         }
     }
 }

@@ -9,16 +9,16 @@ import SwiftUI
 import SwiftData
 
 struct ImageListView: View {
-    /// Swift Data
-    @Query(sort: \ImageModel.date, order: .reverse) var images: [ImageModel]
-    @Environment(\.modelContext) var modelContext
     
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var dDayViewModel: DDayViewModel
-    
+    @StateObject private var cloudKitManager = CloudKitManager()
+
     var columns: [GridItem] = Array(repeating: .init(.flexible(), spacing: 6), count: 3)
     
-    @State var selectedImage: ImageModel?
+    @State var selectedImage: UIImage?
+    @State private var images: [UIImage] = []
+
     @State private var showAddImageSheet: Bool = false
     @State private var showAlert: Bool = false
     
@@ -26,9 +26,9 @@ struct ImageListView: View {
         NavigationStack {
             ScrollView {
                 LazyVGrid(columns: columns, alignment: .center, spacing: 3, pinnedViews: []) {
-                    ForEach(images) { image in
-                        if let imageData = image.imageData, let uiImage = UIImage(data: imageData) {
-                            Image(uiImage: uiImage)
+                    ForEach(images, id: \.self) { image in
+                        NavigationLink(destination: ImageDetailView(image: image)) {
+                            Image(uiImage: image)
                                 .resizable()
                                 .scaledToFill()
                                 .frame(
@@ -37,14 +37,8 @@ struct ImageListView: View {
                                 )
                                 .clipped()
                                 .contextMenu {
-                                    Button(role: .destructive) {
-                                        selectedImage = image
-                                        showAlert = true
-                                    } label: {
-                                        Label("삭제하기", systemImage: "trash")
-                                    }
                                     Button {
-                                        dDayViewModel.selectedImage = uiImage
+                                        dDayViewModel.selectedImage = image
                                         dismiss()
                                     } label: {
                                         Label("배경으로 설정", systemImage: "photo.badge.checkmark")
@@ -79,19 +73,16 @@ struct ImageListView: View {
                     AddImageView()
                         .presentationDetents([.medium, .large])
                 }
-                .alert("알림", isPresented: $showAlert) {
-                    Button("네", role: .destructive) {
-                        if let image = selectedImage {
-                            modelContext.delete(image)
-                        } else {
-                            print("SelectedImage is nil")
-                        }
-                    }
-                    Button("취소", role: .cancel) {}
-                    
-                } message: {
-                    Text("정말로 삭제하시겠어요?")
-                }
+            }
+            .task {
+                loadImages()
+            }
+        }
+    }
+    private func loadImages() {
+        cloudKitManager.fetchImages { fetchedImages in
+            DispatchQueue.main.async {
+                self.images = fetchedImages
             }
         }
     }
@@ -100,7 +91,6 @@ struct ImageListView: View {
 #Preview {
     NavigationStack {
         ImageListView()
-            .modelContainer(for: ImageModel.self, inMemory: true)
-            .environmentObject(DDayViewModel())
+            .environmentObject(DDayViewModel(cloudKitManager: CloudKitManager()))
     }
 }

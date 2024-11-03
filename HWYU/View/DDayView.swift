@@ -9,16 +9,17 @@ import SwiftUI
 import SwiftData
 
 struct DDayView: View {
-    @StateObject private var dDayViewModel = DDayViewModel()
+    @StateObject private var dDayViewModel: DDayViewModel
+    @State private var images: [UIImage] = []
+    
+    init() {
+        _dDayViewModel = StateObject(wrappedValue: DDayViewModel(cloudKitManager: CloudKitManager()))
+    }
     
     @State private var showLetter: Bool = false
     @State private var showAlbum: Bool = false
     private let imageCache = ImageCache.shared
 
-    /// Swift Data
-    @Query var images: [ImageModel]
-    @Environment(\.modelContext) var modelContext
-    
     var body: some View {
         NavigationStack {
             ZStack {
@@ -121,12 +122,11 @@ struct DDayView: View {
     }
     
     private func reloadPage() async {
-        await dDayViewModel.loadRandomImage(from: images)
+        await dDayViewModel.loadRandomImage()
         await dDayViewModel.countDay()
     }
 }
 
 #Preview {
     DDayView()
-        .modelContainer(for: ImageModel.self, inMemory: true)
 }

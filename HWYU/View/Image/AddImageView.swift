@@ -9,8 +9,9 @@ import SwiftUI
 import PhotosUI
 
 struct AddImageView: View {
+    @StateObject private var cloudKitManager = CloudKitManager()
+
     @Environment(\.dismiss) var dismiss
-    @Environment(\.modelContext) var modelContext
     
     @State var selectedPhotoItems: [PhotosPickerItem] = []
     @State var selectedImages: [UIImage] = []
@@ -70,8 +71,6 @@ struct AddImageView: View {
                     Button(action: {
                         if !selectedImages.isEmpty {
                             addImages(images: selectedImages)
-                            showAlert = true
-                            alertMessage = "이미지가 성공적으로 업로드 되었습니다."
                         } else {
                             print("No Images Selected")
                             showAlert = true
@@ -96,9 +95,11 @@ struct AddImageView: View {
     
     private func addImages(images: [UIImage]) {
         for image in images {
-            if let imageData = image.jpegData(compressionQuality: 1.0) {
-                let newImageModel = ImageModel(imageData: imageData)
-                modelContext.insert(newImageModel)
+            cloudKitManager.uploadImage(image: image) { success in
+                if success {
+                    showAlert = true
+                    alertMessage = "이미지가 성공적으로 업로드 되었습니다."
+                }
             }
         }
     }
@@ -106,5 +107,4 @@ struct AddImageView: View {
 
 #Preview {
     AddImageView()
-        .modelContainer(for: ImageModel.self, inMemory: true)
 }
