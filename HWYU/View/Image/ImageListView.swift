@@ -17,7 +17,6 @@ struct ImageListView: View {
     var columns: [GridItem] = Array(repeating: .init(.flexible(), spacing: 6), count: 3)
     
     @State var selectedImage: UIImage?
-    @State private var images: [UIImage] = []
 
     @State private var showAddImageSheet: Bool = false
     @State private var showAlert: Bool = false
@@ -26,7 +25,7 @@ struct ImageListView: View {
         NavigationStack {
             ScrollView {
                 LazyVGrid(columns: columns, alignment: .center, spacing: 3, pinnedViews: []) {
-                    ForEach(images, id: \.self) { image in
+                    ForEach(cloudKitManager.images, id: \.self) { image in
                         NavigationLink(destination: ImageDetailView(image: image)) {
                             Image(uiImage: image)
                                 .resizable()
@@ -48,7 +47,7 @@ struct ImageListView: View {
                     }
                 }
                 .padding(.top, 10)
-                .navigationTitle("앨범")
+                .navigationTitle("공유 앨범")
                 .toolbar {
                     ToolbarItem(placement: .topBarTrailing) {
                         Button(action: {
@@ -65,24 +64,18 @@ struct ImageListView: View {
                         }
                     }
                     ToolbarItem(placement: .bottomBar) {
-                        Text("\(images.count) Photos")
+                        Text("\(cloudKitManager.images.count) Photos")
                             .font(.headline)
                     }
                 }
                 .sheet(isPresented: $showAddImageSheet) {
                     AddImageView()
                         .presentationDetents([.medium, .large])
+                        .environmentObject(cloudKitManager)
                 }
             }
             .task {
-                loadImages()
-            }
-        }
-    }
-    private func loadImages() {
-        cloudKitManager.fetchImages { fetchedImages in
-            DispatchQueue.main.async {
-                self.images = fetchedImages
+                cloudKitManager.fetchImages() // 앱이 처음 로드될 때 이미지를 가져옵니다.
             }
         }
     }

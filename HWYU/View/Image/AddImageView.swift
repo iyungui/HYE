@@ -9,7 +9,7 @@ import SwiftUI
 import PhotosUI
 
 struct AddImageView: View {
-    @StateObject private var cloudKitManager = CloudKitManager()
+    @EnvironmentObject var cloudKitManager: CloudKitManager
 
     @Environment(\.dismiss) var dismiss
     
@@ -17,6 +17,7 @@ struct AddImageView: View {
     @State var selectedImages: [UIImage] = []
     @State private var showAlert: Bool = false
     @State private var alertMessage: String = ""
+    @State private var isProgress: Bool = false
     
     var body: some View {
         NavigationStack {
@@ -25,6 +26,8 @@ struct AddImageView: View {
                     if selectedImages.isEmpty {
                         ContentUnavailableView("사진 선택", systemImage: "photo.on.rectangle", description: Text("한 번에 여러 개의 사진을 추가할 수 있어요."))
                             .frame(height: 300)
+                    } else if (isProgress) {
+                        ProgressView("사진 업로드 중 입니다. 잠시만 기다려주세요.")
                     } else {
                         ScrollView(.horizontal, showsIndicators: false) {
                             LazyHStack {
@@ -70,9 +73,11 @@ struct AddImageView: View {
                 ToolbarItem(placement: .primaryAction) {
                     Button(action: {
                         if !selectedImages.isEmpty {
+                            self.isProgress = true
                             addImages(images: selectedImages)
                         } else {
                             print("No Images Selected")
+                            self.isProgress = false
                             showAlert = true
                             alertMessage = "이미지 업로드에 실패했습니다."
                         }
@@ -97,6 +102,7 @@ struct AddImageView: View {
         for image in images {
             cloudKitManager.uploadImage(image: image) { success in
                 if success {
+                    self.isProgress = false
                     showAlert = true
                     alertMessage = "이미지가 성공적으로 업로드 되었습니다."
                 }

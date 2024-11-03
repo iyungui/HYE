@@ -18,7 +18,6 @@ struct DDayView: View {
     
     @State private var showLetter: Bool = false
     @State private var showAlbum: Bool = false
-    private let imageCache = ImageCache.shared
 
     var body: some View {
         NavigationStack {

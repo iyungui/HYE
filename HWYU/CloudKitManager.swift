@@ -10,9 +10,17 @@ import UIKit
 
 class CloudKitManager: ObservableObject {
     private let database = CKContainer.default().publicCloudDatabase
+    @Published var images: [UIImage] = []
 
     func uploadImage(image: UIImage, completion: @escaping (Bool) -> Void) {
-        guard let imageData = image.jpegData(compressionQuality: 0.8) else { return }
+        // 1. 이미지 크기 조정 (예: 최대 500x500)
+        let maxSize = CGSize(width: 500, height: 500)
+        guard let resizedImage = image.resized(to: maxSize),
+              let imageData = resizedImage.jpegData(compressionQuality: 0.8) else {
+            completion(false)
+            return
+        }
+        
         let imageURL = saveToTemporaryDirectory(data: imageData)
         
         let record = CKRecord(recordType: "UserPhoto")
@@ -51,7 +59,6 @@ class CloudKitManager: ObservableObject {
                 completion(false)
             }
         }
-
     }
 
     private func saveNewImageRecord(_ record: CKRecord, completion: @escaping (Bool) -> Void) {
@@ -60,6 +67,7 @@ class CloudKitManager: ObservableObject {
                 print("Error saving new image: \(error.localizedDescription)")
                 completion(false)
             } else {
+                self.fetchImages() // 새 이미지가 추가된 후 즉시 업데이트
                 completion(true)
             }
         }
@@ -76,7 +84,7 @@ class CloudKitManager: ObservableObject {
         return fileURL
     }
 
-    func fetchImages(completion: @escaping ([UIImage]) -> Void) {
+    func fetchImages() {
         let query = CKQuery(recordType: "UserPhoto", predicate: NSPredicate(value: true))
         let sortDescriptor = NSSortDescriptor(key: "uploadDate", ascending: false)
         query.sortDescriptors = [sortDescriptor]
@@ -84,23 +92,20 @@ class CloudKitManager: ObservableObject {
         database.fetch(withQuery: query, inZoneWith: nil, desiredKeys: nil, resultsLimit: 0) { result in
             switch result {
             case .success(let (matchResults, _)):
-                var images: [UIImage] = []
-                
-                for matchResult in matchResults {
-                    switch matchResult.1 {
-                    case .success(let record):
-                        if let asset = record["photo"] as? CKAsset, let fileURL = asset.fileURL, let data = try? Data(contentsOf: fileURL), let image = UIImage(data: data) {
-                            images.append(image)
+                DispatchQueue.main.async {
+                    self.images = matchResults.compactMap {
+                        if let record = try? $0.1.get(),
+                           let asset = record["photo"] as? CKAsset,
+                           let fileURL = asset.fileURL,
+                           let data = try? Data(contentsOf: fileURL),
+                           let image = UIImage(data: data) {
+                            return image
                         }
-                    case .failure(let error):
-                        print("Error loading record: \(error.localizedDescription)")
+                        return nil
                     }
                 }
-                completion(images)
-                
             case .failure(let error):
                 print("Error fetching images: \(error.localizedDescription)")
-                completion([])
             }
         }
     }
@@ -133,6 +138,14 @@ class CloudKitManager: ObservableObject {
                 print("Error fetching images: \(error.localizedDescription)")
                 completion(nil)
             }
+        }
+    }
+}
+extension UIImage {
+    func resized(to targetSize: CGSize) -> UIImage? {
+        let renderer = UIGraphicsImageRenderer(size: targetSize)
+        return renderer.image { _ in
+            self.draw(in: CGRect(origin: .zero, size: targetSize))
         }
     }
 }
