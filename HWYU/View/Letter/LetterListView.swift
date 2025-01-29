@@ -10,6 +10,7 @@ import SwiftUI
 struct LetterListView: View {
     @Environment(\.dismiss) var dismiss
     let letters = Letter.letterList
+    
     @State private var showAlert: Bool = false
     @State private var selectedLetter: Letter?
     
@@ -19,12 +20,12 @@ struct LetterListView: View {
                 ForEach(letters) { letter in
                     Button(action: {
                         // 특정 편지를 선택하면 alert 표시
-                        if letter.date == "2024-11-03" && letter.title == "너에게 보내는 두 번째 편지" {
-                            showAlert = true
-                        } else {
-                            // 다른 편지일 경우에만 이동
+//                        if letter.date == "2024-11-03" && letter.title == "너에게 보내는 두 번째 편지" {
+//                            showAlert = true
+//                        } else {
+//                            // 다른 편지일 경우에만 이동
                             navigateToLetter(letter)
-                        }
+//                        }
                     }) {
                         VStack(alignment: .leading) {
                             Text(letter.title)

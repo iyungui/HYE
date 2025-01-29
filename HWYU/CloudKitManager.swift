@@ -8,15 +8,22 @@
 import CloudKit
 import UIKit
 
+@MainActor
 class CloudKitManager: ObservableObject {
     private let database = CKContainer.default().publicCloudDatabase
     @Published var images: [UIImage] = []
+    @Published var isLoading = false
 
+    private let cache = NSCache<NSString, UIImage>()
+    
+    // 캐시 설정
+    init() {
+        cache.countLimit = 100  // 최대 캐시 이미지 수
+        cache.totalCostLimit = 1024 * 1024 * 100  // 100MB 제한
+    }
+    
     func uploadImage(image: UIImage, completion: @escaping (Bool) -> Void) {
-        // 1. 이미지 크기 조정 (예: 최대 500x500)
-        let maxSize = CGSize(width: 500, height: 500)
-        guard let resizedImage = image.resized(to: maxSize),
-              let imageData = resizedImage.jpegData(compressionQuality: 0.8) else {
+        guard let imageData = image.jpegData(compressionQuality: 0.5) else {
             completion(false)
             return
         }
@@ -25,50 +32,18 @@ class CloudKitManager: ObservableObject {
         
         let record = CKRecord(recordType: "UserPhoto")
         record["photo"] = CKAsset(fileURL: imageURL)
-        record["uploadDate"] = Date() // 업로드 날짜 추가
+        record["uploadDate"] = Date()
 
-        // Step 1: Check and delete oldest if more than 10
-        let query = CKQuery(recordType: "UserPhoto", predicate: NSPredicate(value: true))
-        let sortDescriptor = NSSortDescriptor(key: "uploadDate", ascending: true)
-        query.sortDescriptors = [sortDescriptor]
-        
-        database.fetch(withQuery: query, inZoneWith: nil, desiredKeys: nil, resultsLimit: 0) { result in
-            switch result {
-            case .success(let (matchResults, _)):
-                let records = matchResults.compactMap { try? $0.1.get() }
-                
-                if records.count >= 10 {
-                    // 가장 오래된 레코드를 삭제합니다.
-                    if let oldestRecord = records.first {
-                        self.database.delete(withRecordID: oldestRecord.recordID) { _, deleteError in
-                            if let deleteError = deleteError {
-                                print("Error deleting record: \(deleteError.localizedDescription)")
-                                completion(false)
-                                return
-                            }
-                            // 새 이미지를 저장합니다.
-                            self.saveNewImageRecord(record, completion: completion)
-                        }
-                    }
-                } else {
-                    // 10개 미만이므로 새로운 이미지를 직접 저장합니다.
-                    self.saveNewImageRecord(record, completion: completion)
-                }
-            case .failure(let error):
-                print("Error fetching records: \(error.localizedDescription)")
-                completion(false)
-            }
-        }
-    }
-
-    private func saveNewImageRecord(_ record: CKRecord, completion: @escaping (Bool) -> Void) {
-        database.save(record) { savedRecord, error in
+        database.save(record) { [weak self] savedRecord, error in
             if let error = error {
                 print("Error saving new image: \(error.localizedDescription)")
                 completion(false)
             } else {
-                self.fetchImages() // 새 이미지가 추가된 후 즉시 업데이트
-                completion(true)
+                // 메인 액터에서 fetchImages 호출
+                Task { @MainActor in
+                    await self?.fetchImages()
+                    completion(true)
+                }
             }
         }
     }
@@ -84,17 +59,20 @@ class CloudKitManager: ObservableObject {
         return fileURL
     }
 
-    func fetchImages() {
+    func fetchImages() async {
+        isLoading = true
+        defer { isLoading = false }
+        
         let query = CKQuery(recordType: "UserPhoto", predicate: NSPredicate(value: true))
         let sortDescriptor = NSSortDescriptor(key: "uploadDate", ascending: false)
         query.sortDescriptors = [sortDescriptor]
         
-        database.fetch(withQuery: query, inZoneWith: nil, desiredKeys: nil, resultsLimit: 0) { result in
-            switch result {
-            case .success(let (matchResults, _)):
-                DispatchQueue.main.async {
-                    self.images = matchResults.compactMap {
-                        if let record = try? $0.1.get(),
+        do {
+            let (matchResults, _) = try await database.records(matching: query)
+            let newImages = await withTaskGroup(of: UIImage?.self) { group in
+                for result in matchResults {
+                    group.addTask {
+                        if let record = try? result.1.get(),
                            let asset = record["photo"] as? CKAsset,
                            let fileURL = asset.fileURL,
                            let data = try? Data(contentsOf: fileURL),
@@ -104,75 +82,100 @@ class CloudKitManager: ObservableObject {
                         return nil
                     }
                 }
-            case .failure(let error):
-                print("Error fetching images: \(error.localizedDescription)")
+                
+                var images: [UIImage] = []
+                for await image in group {
+                    if let image = image {
+                        images.append(image)
+                    }
+                }
+                return images
             }
+            
+            await MainActor.run {
+                self.images = newImages
+            }
+        } catch {
+            print("Error fetching images: \(error.localizedDescription)")
         }
     }
-    
-    func fetchRandomImage(completion: @escaping (UIImage?) -> Void) {
+
+    func fetchRandomImage() async throws -> UIImage? {
         let query = CKQuery(recordType: "UserPhoto", predicate: NSPredicate(value: true))
         
-        database.fetch(withQuery: query, inZoneWith: nil, desiredKeys: nil, resultsLimit: 0) { result in
-            switch result {
-            case .success(let (matchResults, _)):
-                let records = matchResults.compactMap { try? $0.1.get() }
-                
-                guard !records.isEmpty else {
-                    completion(nil) // 이미지가 없는 경우 nil 반환
-                    return
-                }
-                
-                // 랜덤으로 하나의 레코드 선택
-                let randomRecord = records.randomElement()
-                if let asset = randomRecord?["photo"] as? CKAsset,
-                   let fileURL = asset.fileURL,
-                   let data = try? Data(contentsOf: fileURL),
-                   let image = UIImage(data: data) {
-                    completion(image)
-                } else {
-                    completion(nil)
-                }
-                
-            case .failure(let error):
-                print("Error fetching images: \(error.localizedDescription)")
-                completion(nil)
+        do {
+            let (matchResults, _) = try await database.records(matching: query)
+            let records = matchResults.compactMap { try? $0.1.get() }
+            
+            guard let randomRecord = records.randomElement() else { return nil }
+            
+            // 캐시된 이미지가 있는지 확인
+            let recordID = randomRecord.recordID.recordName as NSString
+            if let cachedImage = cache.object(forKey: recordID) {
+                return cachedImage
             }
+            
+            // 새로운 이미지 로드
+            if let asset = randomRecord["photo"] as? CKAsset,
+               let fileURL = asset.fileURL,
+               let data = try? Data(contentsOf: fileURL),
+               let image = UIImage(data: data) {
+                // 캐시에 저장
+                cache.setObject(image, forKey: randomRecord.recordID.recordName as NSString)
+                return image
+            }
+            
+            return nil
+        } catch {
+            throw error
         }
     }
+
     
     // MARK: - APNS
-    func subscribeToNewPhotos() {
-        // 고유한 식별자를 가진 구독 생성
-        let subscriptionID = "newPhotosSubscription"
-        let subscription = CKQuerySubscription(
-            recordType: "UserPhoto",
-            predicate: NSPredicate(value: true),
-            subscriptionID: subscriptionID,
-            options: .firesOnRecordCreation // 새 레코드 생성 시 알림
-        )
-
-        let notificationInfo = CKSubscription.NotificationInfo()
-        notificationInfo.alertBody = "앨범에 새 사진을 추가했어요."
-        notificationInfo.shouldBadge = true
-        notificationInfo.soundName = "default"
-        
-        subscription.notificationInfo = notificationInfo
-
-        database.save(subscription) { result, error in
-            if let error = error {
-                print("Error subscribing to new photos: \(error.localizedDescription)")
-            } else {
-                print("Successfully subscribed to new photos.")
-            }
-        }
-    }
-}
-extension UIImage {
-    func resized(to targetSize: CGSize) -> UIImage? {
-        let renderer = UIGraphicsImageRenderer(size: targetSize)
-        return renderer.image { _ in
-            self.draw(in: CGRect(origin: .zero, size: targetSize))
-        }
-    }
+//    func subscribeToNewPhotos() {
+//        // 1. 기존 구독 확인 및 삭제
+//        database.fetchAllSubscriptions { [weak self] subscriptions, error in
+//            guard let self = self else { return }
+//            
+//            // 기존 구독이 있다면 삭제
+//            if let subscriptions = subscriptions {
+//                for subscription in subscriptions {
+//                    self.database.delete(withSubscriptionID: subscription.subscriptionID) { _, error in
+//                        if let error = error {
+//                            print("기존 구독 삭제 실패: \(error.localizedDescription)")
+//                        }
+//                    }
+//                }
+//            }
+//            
+//            // 2. 새로운 구독 생성
+//            let predicate = NSPredicate(value: true)
+//            let subscription = CKQuerySubscription(
+//                recordType: "UserPhoto",
+//                predicate: predicate,
+//                subscriptionID: "newPhotosSubscription",
+//                options: [.firesOnRecordCreation]
+//            )
+//            
+//            // 3. 알림 정보 설정
+//            let notificationInfo = CKSubscription.NotificationInfo()
+//            notificationInfo.alertBody = "새로운 사진이 추가되었습니다!"
+//            notificationInfo.shouldBadge = true
+//            notificationInfo.shouldSendContentAvailable = true  // silent push를 위한 설정
+//            notificationInfo.category = "NEW_PHOTO"  // 알림 카테고리 설정
+//            notificationInfo.soundName = "default"
+//            
+//            subscription.notificationInfo = notificationInfo
+//            
+//            // 4. 구독 저장
+//            self.database.save(subscription) { savedSubscription, error in
+//                if let error = error {
+//                    print("Push notification 구독 저장 실패: \(error.localizedDescription)")
+//                } else {
+//                    print("Push notification 구독 성공")
+//                }
+//            }
+//        }
+//    }
 }

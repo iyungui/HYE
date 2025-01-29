@@ -6,24 +6,27 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct Letter: Identifiable {
     let id = UUID()
     let date: String
     let title: String
     var content: [String]
+    var images: [String]
     
-    init(date: String, name: String, fileName: String) {
+    init(date: String, name: String, fileName: String, imagesStart: Int, imagesEnd: Int) {
         self.date = date
         self.title = name
         self.content = Letter.readTextFile(fileName: fileName)
+        self.images = Letter.getImageName(start: imagesStart, end: imagesEnd)
     }
 }
 
 extension Letter {
     static let letterList: [Letter] = [
-        Letter(date: "2024-05-08", name: "혜원이에게", fileName: "Letter_One.txt"),
-        Letter(date: "2024-11-03", name: "너에게 보내는 두 번째 편지", fileName: "Letter_Two.txt")
+        Letter(date: "2024-05-08", name: "혜원이에게", fileName: "Letter_One.txt", imagesStart: 1, imagesEnd: 7),
+        Letter(date: "2024-11-03", name: "너에게 보내는 두 번째 편지", fileName: "Letter_Two.txt", imagesStart: 8, imagesEnd: 21),
     ]
 }
 
@@ -34,8 +37,8 @@ extension Letter {
         var results: Array<String>
         
         guard let path = Bundle.main.path(forResource: fileName, ofType: nil) else {
-                print("Error: file not found - \(fileName)")
-                return []
+            print("Error: file not found - \(fileName)")
+            return []
         }
         
         do {
@@ -47,4 +50,23 @@ extension Letter {
             return []
         }
     }
+    static func getImageName(start: Int, end: Int) -> [String] {
+        return (start...end).map { String(format: "image%02d", $0) }
+    }
 }
+
+
+//struct ItemLetter: View {
+//    var letter: Letter
+//    
+//    init(_ letter: Letter) {
+//        self.letter = letter
+//    }
+//    
+//    var body: some View {
+//        Image(letter.content.first!)
+//            .resizable()
+//            .scaledToFill()
+//            .frame(height: 500)
+//    }
+//}

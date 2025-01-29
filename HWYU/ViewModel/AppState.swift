@@ -1,32 +1,36 @@
+////
+////  AppState.swift
+////  HWYU
+////
+////  Created by Yungui Lee on 11/3/24.
+////
 //
-//  AppState.swift
-//  HWYU
+//import Foundation
+//import SwiftUI
+//import Combine
 //
-//  Created by Yungui Lee on 11/3/24.
-//
-
-import Foundation
-import SwiftUI
-import Combine
-
-class AppState: ObservableObject {
-    @Published var isDataLoaded = false // 데이터 로드 상태
-    let dDayViewModel = DDayViewModel(cloudKitManager: CloudKitManager())
-    
-    init() {
-        Task {
-            await loadData()
-            dDayViewModel.subscribeToNewPhotoNotifications() // 구독 설정
-        }
-    }
-    
-    func loadData() async {
-        await dDayViewModel.loadRandomImage()
-        
-//        try? await Task.sleep(nanoseconds: 1_500_000_000)
-        
-        DispatchQueue.main.async {
-            self.isDataLoaded = (self.dDayViewModel.selectedImage != nil)
-        }
-    }
-}
+//@MainActor
+//class AppState: ObservableObject {
+//    @Published var isDataLoaded = false
+//    let cloudKitManager: CloudKitManager
+//    lazy var dDayViewModel: DDayViewModel = DDayViewModel(cloudKitManager: cloudKitManager)
+//    
+//    init() {
+//        self.cloudKitManager = CloudKitManager()
+//        
+//        setupPushNotifications()
+//        
+//        Task {
+//            await loadData()
+//        }
+//    }
+//    
+//    private func setupPushNotifications() {
+//        cloudKitManager.subscribeToNewPhotos()
+//    }
+//    
+//    func loadData() async {
+//        await dDayViewModel.loadRandomImage()
+//        self.isDataLoaded = (self.dDayViewModel.selectedImage != nil)
+//    }
+//}

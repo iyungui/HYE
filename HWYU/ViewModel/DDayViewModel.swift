@@ -15,16 +15,27 @@ class DDayViewModel: ObservableObject {
     
     @Published var currentDaysCount = 0
     @Published var selectedImage: UIImage?
-    
+    @Published private(set) var isLoading = false
     private let cloudKitManager: CloudKitManager
 
     init(cloudKitManager: CloudKitManager) {
         self.cloudKitManager = cloudKitManager
     }
     
-    // MARK: - APNS
-    func subscribeToNewPhotoNotifications() {
-        cloudKitManager.subscribeToNewPhotos()
+    @MainActor
+    func loadRandomImage() async {
+        guard !isLoading else { return }  // 이미 로딩 중이면 중복 실행 방지
+        isLoading = true
+        
+        do {
+            print("LOAD RANDOM IMAGE\n")
+            self.selectedImage = try await cloudKitManager.fetchRandomImage()
+        } catch {
+            print("Error loading random image: \(error.localizedDescription)")
+            self.selectedImage = nil
+        }
+        
+        isLoading = false
     }
     
     // MARK: - Count Day
@@ -35,11 +46,11 @@ class DDayViewModel: ObservableObject {
         let targetCount = daysSinceStart()
 
         for i in 0...targetCount {
-            // 메인 스레드에서 실행되므로 DispatchQueue.main.async를 사용할 필요 없음
             self.currentDaysCount = i
             try? await Task.sleep(for: .milliseconds(3))
         }
     }
+    
     // Calculates the number of days since the start
     private func daysSinceStart() -> Int {
         let today = Date()
@@ -56,18 +67,4 @@ class DDayViewModel: ObservableObject {
         return formatter.string(from: date)
     }
     
-    @MainActor
-    func loadRandomImage() async {
-        await withCheckedContinuation { continuation in
-            cloudKitManager.fetchRandomImage { randomImage in
-                if let image = randomImage {
-                    self.selectedImage = image
-                } else {
-                    self.selectedImage = nil
-                    print("No images available.")
-                }
-                continuation.resume() // 작업 완료를 알림
-            }
-        }
-    }
 }

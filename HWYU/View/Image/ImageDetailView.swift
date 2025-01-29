@@ -1,26 +1,26 @@
+////
+////  ImageDetailView.swift
+////  HWYU
+////
+////  Created by Yungui Lee on 11/3/24.
+////
 //
-//  ImageDetailView.swift
-//  HWYU
+//import SwiftUI
+//import UIKit
 //
-//  Created by Yungui Lee on 11/3/24.
+//struct ImageDetailView: View {
+//    let image: UIImage
+//    
+//    var body: some View {
+//        VStack {
+//            Image(uiImage: image)
+//                .resizable()
+//                .aspectRatio(contentMode: .fit)
+//                .ignoresSafeArea()
+//        }
+//    }
+//}
 //
-
-import SwiftUI
-import UIKit
-
-struct ImageDetailView: View {
-    let image: UIImage
-    
-    var body: some View {
-        VStack {
-            Image(uiImage: image)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .ignoresSafeArea()
-        }
-    }
-}
-
-#Preview {
-    ImageDetailView(image: UIImage(imageLiteralResourceName: "image03"))
-}
+//#Preview {
+//    ImageDetailView(image: UIImage(imageLiteralResourceName: "image03"))
+//}

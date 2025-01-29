@@ -8,96 +8,67 @@
 import SwiftUI
 
 struct LetterView: View {
+    @Environment(\.dismiss) private var dismiss
     @State private var currentPage: Int = 0
-    
     let letter: Letter
-
-    var body: some View {
-        VStack {
-            TabView(selection: $currentPage) {
-                ForEach(0..<letter.content.count, id: \.self) { index in
-                    LetterDetailView(letterText: letter.content, index: index)
-                }
-            }
-            .tabViewStyle(PageTabViewStyle())
-            .indexViewStyle(.page(backgroundDisplayMode: .always))
-            .animation(.easeInOut, value: currentPage)
-            
-            // 페이지 변경 버튼 추가
-            HStack {
-                Button(action: {
-                    if currentPage > 0 {
-                        currentPage -= 1
-                    }
-                }) {
-                    Text("이전")
-                }
-                .disabled(currentPage == 0) // 첫 페이지에서는 비활성화
-
-                Spacer()
-
-                Button(action: {
-                    if currentPage < letter.content.count - 1 {
-                        currentPage += 1
-                    }
-                }) {
-                    Text("다음")
-                }
-                .disabled(currentPage == letter.content.count - 1) // 마지막 페이지에서는 비활성화
-            }
-            .padding()
-        }
-        .padding()
-    }
-}
-
-struct LetterDetailView: View {
-    let letterText: [String]
-    let index: Int
     
-    var images: [String] {
-        return (1...7).map { String(format: "image%02d", $0) }
-    }
-
-    @Environment(\.dismiss) var dismiss
-
     var body: some View {
-        VStack {
-            Spacer()
-            
-            Image(images[index % images.count])
-                .resizable()
-                .scaledToFit()
-                .frame(height: 200)
-                .padding()
-            
-            Text(letterText[index % letterText.count])
-                .font(Font.custom("GowunBatang-Regular", size: 17))
-                .padding()
-            
-            
-            HStack {
-                Spacer()
-                Text("\(index + 1) / \(letterText.count)")
-                    .font(Font.custom("GowunBatang-Regular", size: 13))
-                    .foregroundStyle(.gray)
-                    .padding()
-            }
-            .padding(.bottom)
-            
-            if index + 1 == letterText.count {
-                Button("안녕!") {
-                    dismiss()
+        ScrollView(.horizontal) {
+            LazyHStack(spacing: 16) {
+                ForEach(0..<letter.content.count, id: \.self) { index in
+                    GeometryReader { geometry in
+                        VStack(spacing: 20) {
+                            Spacer() // 상단 여백 추가
+                            
+                            VStack {
+                                ZStack {
+                                    Image(letter.images[index % letter.images.count])
+                                        .resizable()
+                                        .scaledToFill()
+                                        .frame(height: 400)
+                                        .scrollTransition(axis: .horizontal) { content, phase in
+                                            content
+                                                .offset(x: phase.isIdentity ? 0 : phase.value * -200)
+                                        }
+                                }
+                                .clipShape(RoundedRectangle(cornerRadius: 36))
+                            }
+                            .frame(height: 400)
+                            
+                            ScrollView(.vertical) {
+                                Text(letter.content[index])
+                                    .multilineTextAlignment(.center)
+                                    .font(.body)
+                                    .fontWeight(.semibold)
+                                    .italic()
+                                    .frame(width: 300)
+                                    .padding(.vertical)
+                                    .scrollTransition(axis: .horizontal) { content, phase in
+                                        content
+                                            .opacity(phase.isIdentity ? 1 : 0)
+                                            .offset(x: phase.value * 100)
+                                    }
+                            }
+                            .frame(height: 100)
+                            
+                            if index == letter.content.count - 1 {
+                                Button("안녕!") {
+                                    dismiss()
+                                }
+                            }
+                            Spacer() // 하단 여백 추가
+                        }
+                        .frame(width: geometry.size.width, height: geometry.size.height)
+                    }
+                    .containerRelativeFrame(.horizontal)
                 }
             }
-            
-            Spacer()
-
         }
-        .padding()
+        .scrollTargetLayout()
+        .contentMargins(32)
+        .scrollTargetBehavior(.viewAligned)
     }
 }
-
 #Preview {
     LetterView(letter: Letter.letterList.first!)
 }
