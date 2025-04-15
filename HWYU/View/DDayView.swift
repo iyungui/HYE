@@ -74,8 +74,6 @@ struct DDayView: View {
             .fullScreenCover(isPresented: $showAlbum) {
                 if #available(iOS 18.0, *) {
                     ImageListView().environmentObject(dDayViewModel)
-                } else {
-                    // Fallback on earlier versions
                 }
             }
         }

@@ -47,7 +47,7 @@ class DDayViewModel: ObservableObject {
 
         for i in 0...targetCount {
             self.currentDaysCount = i
-            try? await Task.sleep(for: .milliseconds(3))
+            try? await Task.sleep(for: .milliseconds(1))
         }
     }
     
@@ -57,14 +57,12 @@ class DDayViewModel: ObservableObject {
         guard today > startDate else { return 0 }
         
         let components = Calendar.current.dateComponents([.day], from: startDate, to: today)
-        
         return components.day ?? 0
     }
     
     func formatDate(_ date: Date) -> String {
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy.MM.dd"
+        formatter.dateFormat = "yyyy월 MM월 dd일"
         return formatter.string(from: date)
     }
-    
 }
